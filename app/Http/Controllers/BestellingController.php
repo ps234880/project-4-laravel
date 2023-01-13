@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Klant;
+use App\Models\Bestelling;
 
-class Gerecht_IngrediëntController extends Controller
+class BestellingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,9 @@ class Gerecht_IngrediëntController extends Controller
      */
     public function index()
     {
-        //
+        $bestellingen = Bestelling::all();
+        $klanten = Klant::all();
+        return view('bestellingen.index', compact('klanten', 'bestellingen'));
     }
 
     /**

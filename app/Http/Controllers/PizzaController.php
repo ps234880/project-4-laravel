@@ -2,18 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pizza;
+use App\Models\Ingrediënt;
 use Illuminate\Http\Request;
 
-class GerechtController extends Controller
+class PizzaController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+    $this->middleware('auth')->except(['index', 'show']);
+    }
+
     public function index()
     {
-        //
+        $pizzas = Pizza::orderBy('naam')->paginate(10);
+        $ingrediënten = Ingrediënt::all();
+
+        return view('pizzas.index', compact('pizzas', 'ingrediënten'))
+            ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**

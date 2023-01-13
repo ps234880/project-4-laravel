@@ -33,3 +33,12 @@ function prijsberekening() {
         document.getElementById('order').style.display='none';
     }
 }
+
+function clickCounter() {
+    if (sessionStorage.clickcount) {
+      sessionStorage.clickcount = Number(sessionStorage.clickcount) + 1;
+    } else {
+      sessionStorage.clickcount = 1;
+      }
+    document.getElementById("demo").innerHTML = sessionStorage.clickcount;
+  }

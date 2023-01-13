@@ -1,9 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\RestaurantController;
-use App\Http\Controllers\GerechtController;
-use App\Http\Controllers\Gerecht_IngrediëntController;
+use App\Http\Controllers\PizzaController;
+use App\Http\Controllers\BestellingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,11 +17,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('route1.index');
+    return view('pizzas.index');
 });
 
 Route::resources([
-    'restauranten' => RestaurantController::class
+    'pizzas' => PizzaController::class,
+    'bestellingen' => BestellingController::class
 ]);
 
 /*
