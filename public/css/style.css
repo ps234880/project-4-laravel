@@ -1,0 +1,165 @@
+@font-face {
+    font-family: "font";
+    src: url("../fonts/Bagnard.otf");
+}
+
+body {
+    overflow-y: scroll;
+    font-family: 'verdana';
+    margin: 0px;
+    font-size: solid 1px black.2em;
+    background: white;
+}
+
+button {
+    font-family: 'verdana';
+    font-size: 15px;
+}
+
+button:hover {
+    opacity: 0.75;
+    cursor: pointer;
+}
+
+select {
+    width: 100%;
+    font-family: 'verdana';
+    padding: 10px;
+    font-size: 15px;
+}
+
+header {
+    font-family: 'font';
+    padding: 10px;
+    font-size: 2rem;
+    text-align: center;
+    background: #ce2b37;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    font-family: 'font';
+    background: #009246;
+    color: white;
+}
+
+table {
+    margin: auto;
+}
+
+#order {
+    top: 0px;
+    right: 0px;
+    position: fixed;
+    margin-top: 60px;
+    height: 100%;
+    width: 100%;
+    background: white;
+    display: none;
+    text-align: center;
+}
+
+#cart {
+    height: 35px;
+    float: right;
+}
+
+#create {
+    font-family: "verdana";
+    width: 100%;
+    padding: 18px;
+    color: white;
+    background: #009246;
+    border: none;
+    font-weight: bold;
+    border-bottom: solid 1px black;
+}
+
+#delete {
+    font-family: "verdana";
+    width: 100%;
+    padding: 18px;
+    color: white;
+    background: #ce2b37;
+    border: none;
+    font-weight: bold;
+}
+
+#paginate {
+    font-family: "verdana";
+    padding: 18px;
+    color: white;
+    background: #ce2b37;
+    border: none;
+    font-weight: bold;
+}
+
+ul, ol, li
+{
+    display: inline-flex;
+    margin: auto;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+textarea {
+    height: 150px;
+}
+
+.hide {
+    display: none;
+}
+
+td {
+    text-align: center;
+    width: 200px;
+    padding: 0 10px;
+}
+
+.active-link {
+    color: white;
+    pointer-events: none;
+}
+
+/* js */
+.collapsible {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+    font-weight: bold;
+}
+
+.collapsible:after {
+  content: '\002B';
+  color: black;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  border-bottom: solid 1px black;
+}
