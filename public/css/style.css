@@ -95,8 +95,7 @@ table {
     font-weight: bold;
 }
 
-ul, ol, li
-{
+ul, ol, li {
     display: inline-flex;
     margin: auto;
     padding: 0;
@@ -129,15 +128,15 @@ td {
 
 /* js */
 .collapsible {
-  background-color: white;
-  color: black;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
 }
 
 .active, .collapsible:hover {
@@ -145,21 +144,21 @@ td {
 }
 
 .collapsible:after {
-  content: '\002B';
-  color: black;
-  font-weight: bold;
-  float: right;
-  margin-left: 5px;
+    content: '\002B';
+    color: black;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
 }
 
 .active:after {
-  content: "\2212";
+    content: "\2212";
 }
 
 .content {
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  border-bottom: solid 1px black;
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    border-bottom: solid 1px black;
 }
