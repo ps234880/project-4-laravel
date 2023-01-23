@@ -19,7 +19,7 @@
     <button class="collapsible">{{$pizza->naam}}</button>
     <div class="content">
         <p>Ingrediënten:
-            @foreach ($ingrediënten as $ingrediënt)
+            @foreach ($pizza->ingrediënten as $ingrediënt)
                 {{ $ingrediënt->naam }},
             @endforeach
         </p>
