@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ingredient;
 use Illuminate\Http\Request;
 
 class IngredientController extends Controller
@@ -13,7 +14,9 @@ class IngredientController extends Controller
      */
     public function index()
     {
-        //
+        $ingredients = Ingredient::all();
+
+        return view('ingredients.index', compact('ingredients'));
     }
 
     /**
@@ -23,7 +26,7 @@ class IngredientController extends Controller
      */
     public function create()
     {
-        //
+        return view('ingredients.create');
     }
 
     /**
@@ -34,7 +37,12 @@ class IngredientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:20',
+            'price' => 'required',
+        ]);
+        Ingredient::create($request->only(['name', 'price']));
+        return redirect('/ingredients');
     }
 
     /**
@@ -56,7 +64,8 @@ class IngredientController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ingredient = Ingredient::find($id);
+        return view('ingredients.edit', compact('ingredient'));
     }
 
     /**
@@ -68,7 +77,12 @@ class IngredientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:20',
+            'price' => 'required',
+        ]);
+        Ingredient::find($id)->update($request->only(['name']));
+        return redirect('/ingredients')->with('success', 'Ingredient updated.');
     }
 
     /**
@@ -79,6 +93,7 @@ class IngredientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Ingredient::destroy($id);
+        return redirect('/ingredients')->with('success', 'Ingredient deleted.');
     }
 }

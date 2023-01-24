@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PizzaController;
 use App\Http\Controllers\OrderController;
@@ -22,7 +23,8 @@ Route::get('/', function () {
 
 Route::resources([
     'pizzas' => PizzaController::class,
-    'orders' => OrderController::class
+    'orders' => OrderController::class,
+    'ingredients' => IngredientController::class,
 ]);
 
 Route::get('/dashboard', function () {
@@ -35,4 +37,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
