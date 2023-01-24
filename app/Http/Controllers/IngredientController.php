@@ -81,7 +81,7 @@ class IngredientController extends Controller
             'name' => 'required|max:20',
             'price' => 'required',
         ]);
-        Ingredient::find($id)->update($request->only(['name']));
+        Ingredient::find($id)->update($request->only(['name', 'price']));
         return redirect('/ingredients')->with('success', 'Ingredient updated.');
     }
 
