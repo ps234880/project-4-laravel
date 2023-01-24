@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pizza;
-use App\Models\Ingredient;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
-class PizzaController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,13 +14,15 @@ class PizzaController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function __construct()
+    {
+        $this->middleware('role:admin');
+    }
+
     public function index()
     {
-        $pizzas = Pizza::orderBy('name')->paginate(10);
-        $ingredients = Ingredient::all();
-
-        return view('pizzas.index', compact('pizzas', 'ingredients'))
-            ->with('i', (request()->input('page', 1) - 1) * 10);
+        $users = User::orderBy('created_at', 'desc')->get();
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -30,7 +32,7 @@ class PizzaController extends Controller
      */
     public function create()
     {
-        return view('pizzas.create');
+        //
     }
 
     /**
@@ -47,10 +49,10 @@ class PizzaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
         //
     }
@@ -58,33 +60,38 @@ class PizzaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        $roles = Role::all();
+        return view('users.edit', [
+            'user' => $user,
+            'roles' => $roles
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $user->syncRoles($request->roles);
+        return redirect()->route('users.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
         //
     }

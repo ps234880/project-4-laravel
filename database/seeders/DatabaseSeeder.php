@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             IngredientSeeder::class,
             PizzaSeeder::class,
+            RoleSeeder::class,
+            UserSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
 
