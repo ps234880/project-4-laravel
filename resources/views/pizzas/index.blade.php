@@ -90,7 +90,7 @@
             <div class="sm:flex sm:items-center">
                 <div class="sm:flex-auto">
                     <h1 class="text-xl font-semibold text-gray-900">Pizza</h1>
-                    <p class="mt-2 text-sm text-gray-700">A list of all pizza</p>
+                    <p class="mt-2 text-sm text-gray-700">A list of pizzas</p>
                 </div>
 
                 {{-- Add pizza --}}
@@ -104,9 +104,6 @@
             <table class="mt-8 min-w-full shadow ring-1 ring-black ring-opacity-20">
                 <thead class="bg-gray-50">
                     <tr>
-                        <th scope="col" class="py-4 pl-4 text-left text-xs font-medium uppercase text-gray-500">
-                            ID
-                        </th>
                         <th scope="col" class="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
                             Name
                         </th>
@@ -117,10 +114,6 @@
                 <tbody class="divide-y divide-gray-200 bg-white">
                     @foreach ($pizzas as $pizza)
                         <tr>
-                            <td class="whitespace-nowrap py-3 pl-4 pr-3 text-sm font-medium text-gray-900">
-                                {{ $pizza->id }}
-                            </td>
-
                             <td class="whitespace-nowrap py-3 pl-4 pr-3 text-sm font-medium text-gray-900">
                                 {{ $pizza->name }}
                             </td>
