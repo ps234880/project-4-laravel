@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../../css/style.css">
+    @vite('resources/css/app.css')
 </head>
 
 <body>
