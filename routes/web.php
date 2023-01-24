@@ -25,7 +25,7 @@ Route::get('/', function () {
 Route::resources([
     'pizzas' => PizzaController::class,
     'orders' => OrderController::class,
-    'users' => UserController::class,,
+    'users' => UserController::class,
     'ingredients' => IngredientController::class,
 ]);
 
