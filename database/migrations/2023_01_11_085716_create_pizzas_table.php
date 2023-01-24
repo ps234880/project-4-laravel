@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('pizzas', function (Blueprint $table) {
             $table->id('id');
-            $table->string('naam')->nullable(false);
+            $table->string('name')->nullable(false);
         });
     }
 

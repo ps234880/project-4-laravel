@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Ingrediënt;
+use App\Models\Ingredient;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            IngrediëntSeeder::class,
+            IngredientSeeder::class,
             PizzaSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();

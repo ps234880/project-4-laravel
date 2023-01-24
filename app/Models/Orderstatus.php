@@ -4,18 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Ingredient;
+use App\Models\User;
 
-class Pizza extends Model
+
+class Orderstatus extends Model
 {
     use HasFactory;
-    protected $table = 'pizzas';
+    protected $table = 'orderstatus';
     protected $fillable = [
-        'name'
+        'status'
     ];
 
-    public function ingredients()
+    public function user()
     {
-        return $this->belongsToMany(Ingredient::class);
+        return $this->belongsTo(User::class);
     }
 }

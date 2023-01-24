@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ingrediënt_pizza', function (Blueprint $table) {
-            $table->unsignedBigInteger('ingrediënt_id')->index();
-            $table->foreign('ingrediënt_id')->references('id')->on('ingrediënten')->cascadeOnUpdate()->cascadeOnDelete();
+        Schema::create('ingredient_pizza', function (Blueprint $table) {
+            $table->unsignedBigInteger('ingredient_id')->index();
+            $table->foreign('ingredient_id')->references('id')->on('ingredients')->cascadeOnUpdate()->cascadeOnDelete();
             $table->unsignedBigInteger('pizza_id')->index();
             $table->foreign('pizza_id')->references('id')->on('pizzas')->cascadeOnUpdate()->cascadeOnDelete();
         });

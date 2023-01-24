@@ -16,23 +16,23 @@ class PizzaSeeder extends Seeder
     public function run()
     {
         DB::table('pizzas')->insert([
-            'naam' => "Hawaii",
+            'name' => "Hawaii",
         ]);
 
         DB::table('pizzas')->insert([
-            'naam' => "Margherita",
+            'name' => "Margherita",
         ]);
 
         DB::table('pizzas')->insert([
-            'naam' => "Quattro formaggi",
+            'name' => "Quattro formaggi",
         ]);
 
         DB::table('pizzas')->insert([
-            'naam' => "Pepperoni",
+            'name' => "Pepperoni",
         ]);
 
         DB::table('pizzas')->insert([
-            'naam' => "Kiwinini",
+            'name' => "Kiwinini",
         ]);
     }
 }

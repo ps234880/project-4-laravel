@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ingrediënten', function (Blueprint $table) {
+        Schema::create('orderstatus', function (Blueprint $table) {
             $table->id('id');
-            $table->string('naam')->nullable(false);
-            $table->double('prijs')->nullable(false);
+            $table->string('status')->nullable(false);
         });
     }
 
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ingrediënten');
+        Schema::dropIfExists('bestelstatus');
     }
 };

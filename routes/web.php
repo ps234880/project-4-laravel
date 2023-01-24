@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PizzaController;
-use App\Http\Controllers\BestellingController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,16 +22,8 @@ Route::get('/', function () {
 
 Route::resources([
     'pizzas' => PizzaController::class,
-    'bestellingen' => BestellingController::class
+    'orders' => OrderController::class
 ]);
-
-/*
-Route::resources([
-    'restauranten' => RestaurantController::class,
-    'gerechten' => GerechtController::class,
-    'ingrediënten' => Gerecht_IngrediëntController::class
-]);
-*/
 
 Route::get('/dashboard', function () {
     return view('dashboard');

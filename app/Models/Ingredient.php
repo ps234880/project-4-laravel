@@ -6,14 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Pizza;
 
-class Ingrediënt extends Model
+class Ingredient extends Model
 {
     use HasFactory;
-    // moet table aangeven want default path zou "pizzas" zijn
-    protected $table = 'ingrediënten';
+    protected $table = 'ingredients';
     protected $fillable = [
-        'naam',
-        'prijs'
+        'name',
+        'price'
     ];
 
     public function pizzas()
