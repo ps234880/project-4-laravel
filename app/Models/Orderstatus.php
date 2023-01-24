@@ -4,20 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Klant;
+use App\Models\User;
 
 
-class Bestelstatus extends Model
+class Orderstatus extends Model
 {
     use HasFactory;
-    // moet table aangeven want default path zou "pizzas" zijn
-    protected $table = 'bestelstatus';
+    protected $table = 'orderstatus';
     protected $fillable = [
-        'naam'
+        'status'
     ];
 
-    public function klant()
+    public function user()
     {
-        return $this->belongsTo(Bestelling::class);
+        return $this->belongsTo(User::class);
     }
 }

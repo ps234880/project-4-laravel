@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Klant;
-use App\Models\Bestelling;
+use App\Models\User;
+use App\Models\Order;
 
-class BestellingController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class BestellingController extends Controller
      */
     public function index()
     {
-        $bestellingen = Bestelling::all();
-        $klanten = Klant::all();
-        return view('bestellingen.index', compact('klanten', 'bestellingen'));
+        $orders = Order::all();
+        $users = User::all();
+        return view('orders.index', compact('users', 'orders'));
     }
 
     /**

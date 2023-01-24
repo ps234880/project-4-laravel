@@ -14,13 +14,13 @@
 @endif
 
 <!-- CONTENT -->
-@foreach ($klanten as $klant)
-    {{ $klant->bestellingen[0]->bon }}
+@foreach ($users as $user)
+    {{ $user->orders[0]->receipt }}
 @endforeach
 
 <!-- FOOTER -->
 <footer>
-    <p>Copyright Stonks-pizza 2023</p>
+    <p>Copyright Stonks-pizza 2023-2024</p>
 </footer>
 
 <!-- JS SCRIPTS -->

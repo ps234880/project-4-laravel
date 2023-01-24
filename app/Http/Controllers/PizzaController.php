@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pizza;
-use App\Models\Ingrediënt;
+use App\Models\Ingredient;
 use Illuminate\Http\Request;
 
 class PizzaController extends Controller
@@ -20,10 +20,10 @@ class PizzaController extends Controller
 
     public function index()
     {
-        $pizzas = Pizza::orderBy('naam')->paginate(10);
-        $ingrediënten = Ingrediënt::all();
+        $pizzas = Pizza::orderBy('name')->paginate(10);
+        $ingredients = Ingredient::all();
 
-        return view('pizzas.index', compact('pizzas', 'ingrediënten'))
+        return view('pizzas.index', compact('pizzas', 'ingredients'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 

@@ -16,28 +16,28 @@
 
 <!-- REPSONSIVE CRUD -->
 @foreach ($pizzas as $pizza)
-    <button class="collapsible">{{$pizza->naam}}</button>
+    <button class="collapsible">{{$pizza->name}}</button>
     <div class="content">
-        <p>Ingrediënten:
-            @foreach ($pizza->ingrediënten as $ingrediënt)
-                {{ $ingrediënt->naam }},
+        <p>Ingredients:
+            @foreach ($pizza->ingredients as $ingredient)
+                {{ $ingredient->name }},
             @endforeach
         </p>
-        <p>Prijs per stuk: €10,00</p>
-        <b>Formaat</b>
+        <p>Price: €10,00</p>
+        <b>Size</b>
         <br>
         <br>
-        <select id="formaat">
-            <option>Klein</option>
-            <option selected="selected">Normaal</option>
-            <option>Groot</option>
+        <select id="size">
+            <option>Small</option>
+            <option selected="selected">Medium</option>
+            <option>Large</option>
         </select>
         <br>
         <br>
-        <b>Aantal</b>
+        <b>Amount</b>
         <br>
         <br>
-        <select id="aantal">
+        <select id="amount">
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -51,22 +51,22 @@
         </select>
         <br>
         <br>
-        <b>Ingrediënten</b>
+        <b>Ingredients</b>
         <br>
         <br>
         <select>
-            @foreach ($ingrediënten as $ingrediënt)
+            @foreach ($ingredients as $ingredient)
             <option>
-                {{ $ingrediënt->naam }}
+                {{ $ingredient->name }}
             </option>
             @endforeach
         </select>
         <br>
         <br>
-        <button id="create"><a href="">Ingrediënt Toevoegen</a></button>
-        <button id="delete"><a href="">Ingrediënt Verwijderen</a></button>
-        <p>Totaalprijs: €10,00</p>
-        <button id="create"><a href="">Pizza Toevoegen</a></button>
+        <button id="create"><a href="">Add Ingredient</a></button>
+        <button id="delete"><a href="">Remove Ingrediënt</a></button>
+        <p>Total Price: €10,00</p>
+        <button id="create"><a href="">Add To Cart</a></button>
     </div>
 @endforeach
 
@@ -74,15 +74,15 @@
 
 <!-- SHOPPING CART -->
 <div id="order">
-    <h2>Bestelling</h2>
-    <p>Totaalprijs:</p>
-    <a href="bestellingen"><button id="create">Afronden</a></button>
+    <h2>Order</h2>
+    <p>Total Price:</p>
+    <a href="orders"><button id="create">Complete</a></button>
 </div>
 
 
 <!-- FOOTER -->
 <footer>
-    <p>Copyright Stonks-pizza 2023</p>
+    <p>Copyright Stonks-Pizza 2023-2024</p>
 </footer>
 
 <!-- JS SCRIPTS -->
