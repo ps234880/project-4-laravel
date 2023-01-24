@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ingrediënten', function (Blueprint $table) {
+        Schema::create('ingredients', function (Blueprint $table) {
             $table->id('id');
-            $table->string('naam')->nullable(false);
-            $table->double('prijs')->nullable(false);
+            $table->string('name')->nullable(false);
+            $table->double('price')->nullable(false);
         });
     }
 

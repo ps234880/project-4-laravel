@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('bestelstatus', function (Blueprint $table) {
+        Schema::create('orderstatus', function (Blueprint $table) {
             $table->id('id');
-            $table->string('naam')->nullable(false);
+            $table->string('status')->nullable(false);
         });
     }
 
