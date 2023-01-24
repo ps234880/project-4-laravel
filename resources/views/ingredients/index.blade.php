@@ -20,35 +20,29 @@
         {{-- Left right gap --}}
         <div class="px-4 sm:px-6 lg:px-8">
 
-            {{-- Text --}}
-            <div class="sm:flex sm:items-center">
-                <div class="sm:flex-auto">
-                    <h1 class="text-xl font-semibold text-gray-900">Ingredient</h1>
-                    <p class="mt-2 text-sm text-gray-700">A list of ingredients</p>
-                </div>
-
-                {{-- Add ingredient --}}
-                <a href="/ingredients/create"
-                    class="mt-4 inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
-                    Add ingredient
-                </a>
-            </div>
-
             {{-- Table names --}}
-            <table class="mt-8 min-w-full shadow ring-1 ring-black ring-opacity-20">
-                <thead class="bg-gray-50">
+            <table class="mt-8 ring-1 ring-black ring-opacity-20">
+                <thead class="bg-slate-600">
                     <tr>
-                        <th scope="col" class="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                        <th scope="col" class="px-4 py-5 text-center text-xs font-medium uppercase text-slate-50">
                             Name
                         </th>
-                        <th scope="col" class="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                        <th scope="col" class="px-4 py-5 text-center text-xs font-medium uppercase text-slate-50">
                             Price
+                        </th>
+                        <th scope="col" class="px-4 py-5">
+
+                        </th>
+                        <th scope="col" class="px-4 py-5">
+                            <a href="/ingredients/create" class="text-slate-50 font-medium uppercase">
+                                Add ingredient
+                            </a>
                         </th>
                     </tr>
                 </thead>
 
                 {{-- Index pizza --}}
-                <tbody class="divide-y divide-gray-200 bg-white">
+                <tbody class="bg-stone-50">
                     @foreach ($ingredients as $ingredient)
                         <tr>
                             <td class="whitespace-nowrap py-3 pl-4 pr-3 text-sm font-medium text-gray-900">
@@ -79,21 +73,4 @@
             </table>
         </div>
     </div>
-
-
-    <!-- SHOPPING CART -->
-    <div id="order">
-        <h2>Order</h2>
-        <p>Total Price:</p>
-        <a href="orders"><button id="create">Complete</a></button>
-    </div>
-
-
-    <!-- FOOTER -->
-    <footer>
-        <p>Copyright Stonks-Pizza 2023-2024</p>
-    </footer>
-
-    <!-- JS SCRIPTS -->
-    <script src="js/script.js"></script>
 @endsection
