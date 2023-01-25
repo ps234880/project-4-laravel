@@ -24,6 +24,7 @@
                 @endforeach
             </p>
             <p>Price: €10,00</p>
+            <br>
             <b>Size</b>
             <br>
             <br>
