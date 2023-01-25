@@ -10,7 +10,7 @@ class Ingredient extends Model
 {
     use HasFactory;
     protected $table = 'ingredients';
-    protected $fillable = ['name', 'price'];
+    protected $fillable = ['name', 'price', 'unit_id'];
     public $timestamps = false;
 
     public function pizzas()
