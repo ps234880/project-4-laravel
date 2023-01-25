@@ -13,7 +13,7 @@
             <p>{{ $message }}</p>
         </div>
     @endif
-
+    
     <!-- REPSONSIVE CRUD -->
     @foreach ($pizzas as $pizza)
         <button class="collapsible">{{ $pizza->name }}</button>
