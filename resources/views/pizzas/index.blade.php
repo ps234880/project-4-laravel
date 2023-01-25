@@ -1,4 +1,21 @@
-@extends('pizzas.layout')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-600  leading-tight">
+            {{ __('Pizzas') }}
+        </h2>
+    </x-slot>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-slate-600 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                </div>
+            </div>
+        </div>
+    </div>
+</x-app-layout>
+
+{{-- @extends('pizzas.layout')
 
 @section('content')
     <!-- NAVIGATION -->
@@ -81,13 +98,13 @@
     </div>
 
 
-    {{-- Gap from top and max width --}}
+    <!-- Gap from top and max width -->
     <div class="max-w-7xl mx-auto">
 
-        {{-- Left right gap --}}
+        <!-- Left right gap -->
         <div class="px-4 sm:px-6 lg:px-8">
 
-            {{-- Table names --}}
+            <!-- Table names -->
             <table class="mt-8 ring-1 ring-black ring-opacity-20">
                 <thead class="bg-slate-600">
                     <tr>
@@ -104,7 +121,7 @@
                             </a>
                 </thead>
 
-                {{-- Ingredients --}}
+                <!-- Ingredients -->
                 <tbody class="divide-y bg-white">
                     @foreach ($pizzas as $pizza)
                         <tr>
@@ -112,13 +129,13 @@
                                 {{ $pizza->name }}
                             </td>
 
-                            {{-- Edit --}}
+                            <!-- Edit -->
                             <td class="py-4 px-4 text-sm">
                                 <a href="/pizzas/{{ $pizza->id }}/edit"
                                     class="text-indigo-600 hover:text-indigo-900">Edit</a>
                             </td>
 
-                            {{-- Delete --}}
+                            <!-- Delete -->
                             <td class="py-4 px-4 text-sm font-medium">
                                 <form action="{{ route('pizzas.destroy', $pizza->id) }}" method="POST">
                                     @csrf
@@ -140,4 +157,4 @@
 
     <!-- JS SCRIPTS -->
     <script src="js/script.js"></script>
-@endsection
+@endsection --> --}}

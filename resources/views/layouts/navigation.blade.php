@@ -17,14 +17,19 @@
                     </x-nav-link>
                 @hasanyrole('employee|admin')
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index', 'users.edit', 'users.create')">
+                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index', 'users.edit', 'users.create', 'users.destroy')">
                             {{ __('Users') }}
+                    </x-nav-link>   
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('ingredients.index')" :active="request()->routeIs('ingredients.index', 'ingredients.edit', 'ingredients.create', 'ingredients.destroy')">
+                            {{ __('Ingredients') }}
                     </x-nav-link>   
                 </div>
                 @endrole
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('pizzas.index')" :active="request()->routeIs('pizzas.index')">
-                            {{ __('Orders') }}
+                            {{ __('Pizzas') }}
                     </x-nav-link>
                 </div>
             </div>
