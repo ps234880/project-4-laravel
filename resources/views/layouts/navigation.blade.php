@@ -15,11 +15,11 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                @role('admin')
+                @hasanyrole('employee|admin')
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
+                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index', 'users.edit', 'users.create')">
                             {{ __('Users') }}
-                    </x-nav-link>
+                    </x-nav-link>   
                 </div>
                 @endrole
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
@@ -93,6 +93,14 @@
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('users.index')">
+                    {{ __('Users') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('pizzas.index')">
+                    {{ __('Orders') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->

@@ -16,12 +16,13 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('role:admin');
+        $this->middleware('role:admin|employee');
+        
     }
 
     public function index()
     {
-        $users = User::orderBy('created_at', 'desc')->get();
+        $users = User::orderBy('id')->get();
         return view('users.index', compact('users'));
     }
 
@@ -32,7 +33,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
     }
 
     /**
@@ -43,7 +44,27 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'password' => 'required',
+            'email' => 'required',
+            'street' => 'required',
+            'house_number' => 'required',
+            'postal_code' => 'required',
+            'phone_number' => 'required',
+        ]);
+    
+        User::create($request->only([
+            'name',
+            'password',
+            'email',
+            'street',
+            'house_number',
+            'postal_code' ,
+            'phone_number',
+        ]));
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -81,6 +102,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $user->update($request->except('roles'));
         $user->syncRoles($request->roles);
         return redirect()->route('users.index');
     }
@@ -93,6 +115,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+    
+        return redirect()->route('users.index');
     }
 }
