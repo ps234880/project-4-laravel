@@ -82,51 +82,44 @@
 
 
     {{-- Gap from top and max width --}}
-    <div class="max-w-4xl mx-auto mt-10">
+    <div class="max-w-7xl mx-auto">
 
         {{-- Left right gap --}}
         <div class="px-4 sm:px-6 lg:px-8">
 
-            {{-- Text --}}
-            <div class="sm:flex sm:items-center">
-                <div class="sm:flex-auto">
-                    <h1 class="text-xl font-semibold text-gray-900">Pizza</h1>
-                    <p class="mt-2 text-sm text-gray-700">A list of pizzas</p>
-                </div>
-
-                {{-- Add pizza --}}
-                <a href="/pizzas/create"
-                    class="mt-4 inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
-                    Add pizza
-                </a>
-            </div>
-
             {{-- Table names --}}
-            <table class="mt-8 min-w-full shadow ring-1 ring-black ring-opacity-20">
-                <thead class="bg-gray-50">
+            <table class="mt-8 ring-1 ring-black ring-opacity-20">
+                <thead class="bg-slate-600">
                     <tr>
-                        <th scope="col" class="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                        <th scope="col" class="px-4 py-5 text-center text-sm font-medium uppercase text-slate-50">
                             Name
                         </th>
-                    </tr>
+                        <th scope="col" class="px-4 py-5 text-center text-sm font-medium uppercase text-slate-50">
+
+                        </th>
+                        <th scope="col" class="px-4 py-5">
+                            <a href="/pizzas/create"
+                                class="text-slate-50 hover:text-slate-300 text-sm font-medium uppercase">
+                                Add pizza
+                            </a>
                 </thead>
 
-                {{-- Index pizza --}}
-                <tbody class="divide-y divide-gray-200 bg-white">
+                {{-- Ingredients --}}
+                <tbody class="divide-y bg-white">
                     @foreach ($pizzas as $pizza)
                         <tr>
-                            <td class="whitespace-nowrap py-3 pl-4 pr-3 text-sm font-medium text-gray-900">
+                            <td class="py-4 px-4 text-sm text-slate-600">
                                 {{ $pizza->name }}
                             </td>
 
                             {{-- Edit --}}
-                            <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium">
+                            <td class="py-4 px-4 text-sm">
                                 <a href="/pizzas/{{ $pizza->id }}/edit"
                                     class="text-indigo-600 hover:text-indigo-900">Edit</a>
                             </td>
 
                             {{-- Delete --}}
-                            <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium">
+                            <td class="py-4 px-4 text-sm font-medium">
                                 <form action="{{ route('pizzas.destroy', $pizza->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')

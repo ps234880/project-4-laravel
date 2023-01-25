@@ -17,6 +17,7 @@
     <body>
         <div class="max-w-4xl mx-auto mt-5">
             <div class="px-4 sm:px-6 lg:px-8">
+                
                 {{-- Create form --}}
                 <form action="{{ route('ingredients.store') }}" method="POST">
                     @csrf
