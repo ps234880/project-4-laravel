@@ -27,6 +27,33 @@
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="email" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
+        </div>
+
+        <div>
+            <x-input-label for="street" :value="__('Street')" />
+            <x-text-input id="street" name="street" type="text" class="mt-1 block w-full" :value="old('street', $user->street)" required autofocus autocomplete="street" />
+            <x-input-error class="mt-2" :messages="$errors->get('street')" />
+        </div>
+    
+        <div>
+            <x-input-label for="house_number" :value="__('House Number')" />
+            <x-text-input id="house_number" name="house_number" type="text" class="mt-1 block w-full" :value="old('house_number', $user->house_number)" required autofocus autocomplete="house_number" />
+            <x-input-error class="mt-2" :messages="$errors->get('house_number')" />
+        </div>
+
+        <div>
+            <x-input-label for="postal_code" :value="__('Postal Code')" />
+            <x-text-input id="postal_code" name="postal_code" type="text" class="mt-1 block w-full" :value="old('postal_code', $user->postal_code)" required autofocus autocomplete="postal_code" />
+            <x-input-error class="mt-2" :messages="$errors->get('postal_code')" />
+        </div>
+
+        <div>
+            <x-input-label for="phone_number" :value="__('Phone Number')" />
+            <x-text-input id="phone_number" name="phone_number" type="text" class="mt-1 block w-full" :value="old('phone_number', $user->phone_number)" required autofocus autocomplete="phone_number" />
+            <x-input-error class="mt-2" :messages="$errors->get('phone_number')" />
+        </div>
+
+        <div>
 
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
                 <div>
