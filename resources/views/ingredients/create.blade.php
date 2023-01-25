@@ -23,33 +23,33 @@
 
                     {{-- Ingredient name --}}
                     <div class="mb-6">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Ingredient
+                        <label for="name" class="block mb-2 text-sm font-medium text-slate-600">Ingredient
                             name</label>
                         <input type="text"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            class="text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-gray-500 focus:border-gray-500"
                             placeholder="Pineapple" name="name">
                         @error('name')
                             <div>{{ $message }}</div>
                         @enderror
                     </div>
 
-                     {{-- Price --}}
-                     <div class="mb-6">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Price</label>
+                    {{-- Price --}}
+                    <div class="mb-6">
+                        <label for="name" class="block mb-2 text-sm font-medium text-slate-600">Price</label>
                         <input type="text"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            class="text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-gray-500 focus:border-gray-500"
                             placeholder="0.50" name="price">
                         @error('price')
                             <div>{{ $message }}</div>
                         @enderror
                     </div>
 
-                    {{-- Back and save --}}
+                    {{-- Back and create --}}
                     <div class="flex items-center justify-start space-x-4">
-                        <a href="/ingredients" class="text-gray-900 font-medium text-sm">Back</a>
+                        <a href="/ingredients" class="text-slate-600 text-sm">Back</a>
                         <button type="submit"
-                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            Save
+                            class="text-white rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-gray-700 border-gray-600 hover:bg-gray-900">
+                            Create
                         </button>
                     </div>
                 </form>

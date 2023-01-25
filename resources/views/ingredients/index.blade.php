@@ -47,23 +47,23 @@
                     @foreach ($ingredients as $ingredient)
                         <tr>
                             {{-- Name --}}
-                            <td class="py-3 pl-4 pr-3 text-sm text-gray-900">
+                            <td class="py-4 px-4 text-sm text-slate-600">
                                 {{ $ingredient->name }}
                             </td>
 
                             {{-- Price --}}
-                            <td class="py-3 pl-4 pr-3 text-sm text-gray-900">
+                            <td class="py-4 px-4 text-sm text-slate-600">
                                 € {{ $ingredient->price }}
                             </td>
 
                             {{-- Edit --}}
-                            <td class="py-4 pl-4 pr-3 text-sm">
+                            <td class="py-4 px-4 text-sm">
                                 <a href="/ingredients/{{ $ingredient->id }}/edit"
                                     class="text-indigo-600 hover:text-indigo-900">Edit</a>
                             </td>
 
                             {{-- Delete --}}
-                            <td class="py-4 pl-4 pr-3 text-sm font-medium">
+                            <td class="py-4 px-4 text-sm font-medium">
                                 <form action="{{ route('ingredients.destroy', $ingredient->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
