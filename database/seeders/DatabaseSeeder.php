@@ -17,16 +17,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+            UnitSeeder::class,
             IngredientSeeder::class,
             PizzaSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
         ]);
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }
