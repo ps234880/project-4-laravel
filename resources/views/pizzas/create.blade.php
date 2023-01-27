@@ -17,7 +17,7 @@
                     <label for="name"class="block mb-2 text-sm font-medium text-slate-600">Pizza
                         name</label>
                     <input type="text"
-                        class="text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-gray-500 focus:border-gray-500"
+                        class="text-sm rounded-lg block w-full p-2.5 bg-slate-600 border-gray-600 placeholder-gray-400 text-white focus:ring-gray-500 focus:border-gray-500"
                         placeholder="Kiwinini" name="name">
                     @error('name')
                         <div>{{ $message }}</div>

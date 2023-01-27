@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ingredient;
+use App\Models\Unit;
 use Illuminate\Http\Request;
 
 class IngredientController extends Controller
@@ -15,7 +16,6 @@ class IngredientController extends Controller
     public function index()
     {
         $ingredients = Ingredient::all();
-
         return view('ingredients.index', compact('ingredients'));
     }
 
@@ -65,7 +65,8 @@ class IngredientController extends Controller
     public function edit($id)
     {
         $ingredient = Ingredient::find($id);
-        return view('ingredients.edit', compact('ingredient'));
+        $units = Unit::all();
+        return view('ingredients.edit', compact('ingredient', 'units'));
     }
 
     /**
@@ -81,7 +82,7 @@ class IngredientController extends Controller
             'name' => 'required|max:20',
             'price' => 'required',
         ]);
-        Ingredient::find($id)->update($request->only(['name', 'price']));
+        Ingredient::find($id)->update($request->only(['name', 'price', 'unit_id']));
         return redirect('/ingredients')->with('success', 'Ingredient updated.');
     }
 

@@ -17,6 +17,9 @@
                         <th scope="col" class="px-4 py-5 text-left text-sm font-medium uppercase text-slate-50">
                             Price
                         </th>
+                        <th scope="col" class="px-4 py-5 text-left text-sm font-medium uppercase text-slate-50">
+                            Unit
+                        </th>
                         <th scope="col" class="px-4 py-5 rounded-tr-lg">
                             <a href="{{ route('ingredients.create') }}"
                                 class="text-slate-50 hover:text-slate-300 text-sm font-medium uppercase">
@@ -36,6 +39,12 @@
                             <!-- Price -->
                             <td class="py-4 px-4 text-sm text-slate-600">
                                 € {{ $ingredient->price }}
+                            </td>
+                            <!-- Price -->
+                            <td class="py-4 px-4 text-sm text-slate-600">
+                                @isset($ingredient->unit->name)
+                                    {{ $ingredient->unit->name }}
+                                @endisset
                             </td>
                             <!-- Edit and delete -->
                             <td class="py-4 px-4 text-sm font-medium flex justify-between">

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id('id');
             $table->string('name')->nullable(false);
             $table->double('price')->nullable(false);
-            $table->unsignedBigInteger('unit_id');
+            $table->unsignedBigInteger('unit_id')->nullable();
             $table->foreign('unit_id')->nullable()->references('id')->on('units')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
