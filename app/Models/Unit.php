@@ -11,6 +11,7 @@ class Unit extends Model
 
     protected $table = 'units';
     protected $fillable = ['name'];
+    public $timestamps = false;
 
     public function ingredient()
     {

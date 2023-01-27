@@ -4,6 +4,7 @@ use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PizzaController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\UnitController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,7 @@ Route::resources([
     'orders' => OrderController::class,
     'users' => UserController::class,
     'ingredients' => IngredientController::class,
+    'units' => UnitController::class,
 ]);
 
 Route::get('/dashboard', function () {
