@@ -37,6 +37,7 @@
                             {{ __('Pizzas') }}
                     </x-nav-link>
                 </div>
+                @endrole
             </div>
 
             <!-- Settings Dropdown -->
