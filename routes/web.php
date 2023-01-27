@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\IngredientController;
+use App\Http\Controllers\IngredientPizzaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PizzaController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\UserController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +31,7 @@ Route::resources([
     'users' => UserController::class,
     'ingredients' => IngredientController::class,
     'units' => UnitController::class,
+    'ingredient_pizza' => IngredientPizzaController::class,
 ]);
 
 Route::get('/dashboard', function () {

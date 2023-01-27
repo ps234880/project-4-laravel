@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pizza;
-use App\Models\Ingredient;
 use Illuminate\Http\Request;
 
-class PizzaController extends Controller
+class IngredientPizzaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,21 +14,17 @@ class PizzaController extends Controller
      */
     public function index()
     {
-        $pizzas = Pizza::orderBy('name')->paginate(10);
-        $ingredients = Ingredient::all();
-
-        return view('pizzas.index', compact('pizzas', 'ingredients'))
-            ->with('i', (request()->input('page', 1) - 1) * 10);
+        //
     }
 
     /**
      * Show the form for creating a new resource.
-     *  
+     *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        return view('pizzas.create');
+        //
     }
 
     /**
@@ -40,11 +35,10 @@ class PizzaController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required|max:20',
-        ]);
-        Pizza::create($request->only(['name']));
-        return redirect('/pizzas');
+        $ingredient = $request->get('ingredient_id');
+        $pizza = Pizza::find($request->get('pizza_id'));
+        $pizza->ingredients()->syncWithoutDetaching($ingredient);
+        return redirect()->back();
     }
 
     /**
@@ -66,9 +60,7 @@ class PizzaController extends Controller
      */
     public function edit($id)
     {
-        $pizza = Pizza::find($id);
-        $ingredients = Ingredient::all();
-        return view('pizzas.edit', compact('pizza', 'ingredients'));
+        //
     }
 
     /**
@@ -80,11 +72,7 @@ class PizzaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'required|max:15',
-        ]);
-        Pizza::find($id)->update($request->only(['name']));
-        return redirect('/pizzas')->with('success', 'Pizza updated.');
+        //
     }
 
     /**
@@ -93,9 +81,11 @@ class PizzaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        Pizza::destroy($id);
-        return redirect('/pizzas')->with('success', 'Pizza deleted.');
+        $ingredient = $request->get('ingredient_id');
+        $pizza = Pizza::find($id);
+        $pizza->ingredients()->detach($ingredient);
+        return redirect()->back();
     }
 }
