@@ -13,7 +13,6 @@ class PizzaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
     public function index()
     {
         $pizzas = Pizza::orderBy('name')->paginate(10);
@@ -25,7 +24,7 @@ class PizzaController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
+     *  
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -41,7 +40,11 @@ class PizzaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:20',
+        ]);
+        Pizza::create($request->only(['name']));
+        return redirect('/pizzas');
     }
 
     /**
@@ -63,7 +66,8 @@ class PizzaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pizza = Pizza::find($id);
+        return view('pizzas.edit', compact('pizza'));
     }
 
     /**
@@ -75,7 +79,11 @@ class PizzaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:15',
+        ]);
+        Pizza::find($id)->update($request->only(['name']));
+        return redirect('/pizzas')->with('success', 'Pizza updated.');
     }
 
     /**
@@ -86,6 +94,7 @@ class PizzaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Pizza::destroy($id);
+        return redirect('/pizzas')->with('success', 'Pizza deleted.');
     }
 }

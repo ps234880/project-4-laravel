@@ -17,34 +17,31 @@
     <body>
         <div class="max-w-4xl mx-auto mt-5">
             <div class="px-4 sm:px-6 lg:px-8">
-
-                {{-- Create form --}}
-                <form action="{{ route('pizzas.store') }}" method="POST">
+                {{-- Edit form --}}
+                <form method="POST" action="{{ route('pizzas.update', $pizza->id) }}">
+                    @method('PATCH')
                     @csrf
 
                     {{-- Pizza name --}}
                     <div class="mb-6">
-                        <label for="name"class="block mb-2 text-sm font-medium text-slate-600">Pizza
-                            name</label>
+                        <label for="name" class="block mb-2 text-sm font-medium text-slate-600">Pizza name</label>
                         <input type="text"
                             class="text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-gray-500 focus:border-gray-500"
-                            placeholder="Kiwinini" name="name">
+                            name="name" value="{{ $pizza->name }}">
                         @error('name')
                             <div>{{ $message }}</div>
                         @enderror
                     </div>
 
-                    {{-- Back and save --}}
+                    {{-- Back and update --}}
                     <div class="flex items-center justify-start space-x-4">
-                        <a href="/pizzas" class="text-slate-600 text-sm">Back</a>
+                        <a href="/pizzas" class="text-gray-900 font-medium text-sm">Back</a>
                         <button type="submit"
                             class="text-white rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-gray-700 border-gray-600 hover:bg-gray-900">
-                            Save
+                            Update
                         </button>
                     </div>
                 </form>
             </div>
         </div>
     </body>
-
-    </html>

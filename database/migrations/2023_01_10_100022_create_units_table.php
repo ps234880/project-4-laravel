@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ingredients', function (Blueprint $table) {
+        Schema::create('units', function (Blueprint $table) {
             $table->id('id');
             $table->string('name')->nullable(false);
-            $table->double('price')->nullable(false);
-            $table->unsignedBigInteger('unit_id');
-            $table->foreign('unit_id')->nullable()->references('id')->on('units')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ingredients');
+        Schema::dropIfExists('units');
     }
 };
