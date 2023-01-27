@@ -6,55 +6,48 @@
     </x-slot>
 
     <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <table class=" ring-1 ring-black ring-opacity-20 rounded-lg">
-                    <thead class="bg-slate-600 ">
-                        <tr>
-                            <th scope="col" class="px-4 py-5 text-center text-sm font-medium uppercase text-slate-50 rounded-tl-lg">
-                                Name
-                            </th>
-                            <th scope="col" class="px-4 py-5">
-                            </th>
-                            <th scope="col" class="px-4 py-5 rounded-tr-lg">
-                                <a href="{{ route('pizzas.create') }}"
-                                    class="text-slate-50 hover:text-slate-300 text-sm font-medium uppercase">
-                                    Add Pizza
-                                </a>
-                            </th>
-                        </tr>
-                    </thead>
-                    <!-- Pizzas -->
-                    <tbody>
-                        @foreach ($pizzas as $pizza)
-                            <tr>
-                                <!-- Name -->
-                                <td class="py-4 px-4 text-sm text-slate-600">
-                                    {{ $pizza->name }}
-                                </td>
-                                <!-- Edit -->
-                                <td class="py-4 px-4 text-sm">
-                                    <a href="{{ route('pizzas.edit', $pizza->id) }}"
-                                        class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                </td>
-                                <!-- Delete -->
-                                <td class="py-4 px-4 text-sm font-medium">
-                                    <form action="{{ route('pizzas.destroy', $pizza->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="text-red-600 hover:text-red-900">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 grid grid-cols-4 gap-4">
+            @foreach ($pizzas as $pizza)
+            <table class=" ring-1 ring-black ring-opacity-20 rounded-lg">
+                <thead class="bg-slate-600">
+                    <tr>
+                        <th class="px-4 py-5 text-left text-sm font-medium uppercase text-slate-50 rounded-t-lg">
+                            pizza {{ $pizza->name }} - medium - € prijs
+                        </th>
+                    </tr>
+                </thead>
+                <!-- Pizzas -->
+                <tbody>
+                    <tr>
+                        <!-- Pizza  Ingredients -->
+                        <td class="px-4 py-2 text-sm text-slate-600 text-left font-medium">
+                            @foreach ($pizza->ingredients as $ingredient)
+                                {{ $ingredient->name }},
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr class="h-8">
+                        <th class="p-0 justify-between flex">
+                            <button class="px-4 py-2 bg-gray-300 rounded-bl-lg font-semibold text-xs text-gray-800 uppercase tracking-widest hover:bg-white focus:bg-white active:bg-gray-300 transition ease-in-out duration-150">Customize Pizza</button>
+                            <button class="px-4 py-2  bg-gray-300 rounded-br-lg font-semibold text-xs text-gray-800 uppercase tracking-widest hover:bg-white focus:bg-white active:bg-gray-300 transition ease-in-out duration-150">Add To Cart</button>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+            @endforeach
         </div>
+    </div>
+
+    <x-slot name="footer">
+        <h2 class="font-semibold text-l text-gray-600  leading-tight">
+            {{ __('Stonks Pizza') }}
+        </h2>
+    </x-slot>
 </x-app-layout>
 
 {{-- @extends('pizzas.layout')
 
-@section('content')
+@section('content') 
     <!-- NAVIGATION -->
     <header>
         <a class="active-link" href="#">Stonks-pizza</a>
@@ -194,4 +187,4 @@
 
     <!-- JS SCRIPTS -->
     <script src="js/script.js"></script>
-@endsection --> --}}
+@endsection --}}
