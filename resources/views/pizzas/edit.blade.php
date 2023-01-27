@@ -16,7 +16,7 @@
                 <div class="mb-6">
                     <label for="name" class="block mb-2 text-sm font-medium text-slate-600">Pizza name</label>
                     <input type="text"
-                        class="text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-gray-500 focus:border-gray-500"
+                        class="text-sm rounded-lg block w-full p-2.5 bg-slate-600 border-gray-600 placeholder-gray-400 text-white focus:ring-gray-500 focus:border-gray-500"
                         name="name" value="{{ $pizza->name }}">
                     @error('name')
                         <div>{{ $message }}</div>
@@ -25,9 +25,9 @@
 
                 {{-- Back and update --}}
                 <div class="flex items-center justify-start space-x-4">
-                    <a href="/pizzas" class="text-slate-600 font-medium text-sm">Back</a>
+                    <a href="{{ route('pizzas.index') }}" class="text-slate-600 font-medium text-sm">Back</a>
                     <button type="submit"
-                        class="text-white rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-gray-700 border-gray-600 hover:bg-gray-900">
+                        class="text-white rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-slate-600 border-gray-600 hover:bg-slate-700">
                         Update
                     </button>
                 </div>

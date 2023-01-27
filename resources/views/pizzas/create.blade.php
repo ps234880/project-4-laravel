@@ -26,9 +26,9 @@
 
                 {{-- Back and save --}}
                 <div class="flex items-center justify-start space-x-4">
-                    <a href="/pizzas" class="text-slate-600 text-sm">Back</a>
+                    <a href="{{ route('pizzas.index') }}" class="text-slate-600 text-sm">Back</a>
                     <button type="submit"
-                        class="text-white rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-gray-700 border-gray-600 hover:bg-gray-900">
+                        class="text-white rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-slate-600 border-gray-600 hover:bg-slate-700">
                         Save
                     </button>
                 </div>

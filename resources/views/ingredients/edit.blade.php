@@ -36,7 +36,7 @@
 
                 {{-- Back and update --}}
                 <div class="flex items-center justify-start space-x-4">
-                    <a href="/ingredients" class="text-slate-600 font-medium text-sm">Back</a>
+                    <a href="{{ route('ingredients.index') }}" class="text-slate-600 font-medium text-sm">Back</a>
                     <button type="submit"
                         class="text-white rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-gray-700 border-gray-600 hover:bg-gray-900">
                         Update
