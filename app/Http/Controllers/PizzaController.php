@@ -13,10 +13,10 @@ class PizzaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+
     public function __construct()
     {
-        $this->middleware('role:admin|employee');     
+        $this->middleware('role:admin|employee');
     }
 
     public function index()
@@ -50,7 +50,7 @@ class PizzaController extends Controller
             'name' => 'required|max:20',
         ]);
         Pizza::create($request->only(['name']));
-        return redirect('/pizzas');
+        return redirect('pizzas');
     }
 
     /**
@@ -61,7 +61,15 @@ class PizzaController extends Controller
      */
     public function show($id)
     {
-        //
+        $pizza = Pizza::find($id);
+        $ingredients = Ingredient::all();
+
+        $sum = 0;
+        foreach ($pizza->ingredients as $ingredient) {
+            $sum += $ingredient->price;
+        }
+
+        return view('pizzas.show', compact('pizza', 'ingredients', 'sum'));
     }
 
     /**
@@ -90,7 +98,7 @@ class PizzaController extends Controller
             'name' => 'required|max:15',
         ]);
         Pizza::find($id)->update($request->only(['name']));
-        return redirect('/pizzas')->with('success', 'Pizza updated.');
+        return redirect('pizzas')->with('success', 'Pizza updated.');
     }
 
     /**
@@ -102,6 +110,6 @@ class PizzaController extends Controller
     public function destroy($id)
     {
         Pizza::destroy($id);
-        return redirect('/pizzas')->with('success', 'Pizza deleted.');
+        return redirect('pizzas')->with('success', 'Pizza deleted.');
     }
 }

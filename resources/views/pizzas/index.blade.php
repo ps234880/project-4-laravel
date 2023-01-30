@@ -28,7 +28,7 @@
                         <tr>
                             <!-- Name -->
                             <td class="py-4 px-4 text-sm text-slate-600">
-                                {{ $pizza->name }}
+                                <a href="{{ route('pizzas.show', $pizza->id) }}">{{ $pizza->name }}</a>
                             </td>
                             <!-- Edit and delete -->
                             <td class="py-4 px-4 text-sm font-medium flex justify-between">
