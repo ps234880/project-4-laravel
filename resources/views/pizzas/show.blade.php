@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <table class=" ring-1 ring-black ring-opacity-20 rounded-lg">
-                <thead class="bg-slate-600 ">
+                <thead class="bg-slate-600">
                     <tr>
                         <th scope="col"
                             class="px-4 py-5 text-left text-sm font-medium uppercase text-slate-50 rounded-tl-lg">
@@ -41,14 +41,7 @@
                         </td>
                     </tr>
                     <tr class="max-w-2xl">
-                        {{-- Size --}}
                         <td class="py-4 px-4 text-sm text-slate-600">
-                            <select name="" id=""
-                                class="text-sm rounded-lg block w-full p-2.5 bg-slate-600 border-gray-600 placeholder-gray-400 text-white focus:ring-gray-500 focus:border-gray-500">
-                                <option value="">Small</option>
-                                <option value="">Medium</option>
-                                <option value="">Large</option>
-                            </select>
                         </td>
                         <td class="py-4 px-4 text-sm text-slate-600">Extra ingredients:
                         </td>
@@ -61,11 +54,56 @@
                         {{-- Extra ingredients --}}
                         <td class="py-4 px-4 text-sm text-slate-600">
                             @foreach ($ingredients as $ingredient)
-                                {{ $ingredient->name }}
+                                <input type="checkbox" name="ingredients[]" value=""> {{ $ingredient->name }} - €
+                                {{ $ingredient->price }}
                                 <br>
                             @endforeach
                         </td>
                         <td class="py-4 px-4 text-sm text-slate-600">
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr class="max-w-2xl">
+                        <td class="py-4 px-4 text-sm text-slate-600">
+                        </td>
+                        <td class="py-4 px-4 text-sm text-slate-600">Remove ingredients:
+                        </td>
+                        <td class="py-4 px-4 text-sm text-slate-600">
+                        </td>
+                    </tr>
+                    <tr class="max-w-2xl">
+                        <td class="py-4 px-4 text-sm text-slate-600">
+                        </td>
+                        {{-- Remove ingredients --}}
+                        <td class="py-4 px-4 text-sm text-slate-600">
+                            @foreach ($pizza->ingredients as $ingredient)
+                                <input type="checkbox" name="ingredients[]" value=""> {{ $ingredient->name }} €
+                                {{ $ingredient->price }}
+                                <br>
+                            @endforeach
+                        </td>
+                        <td class="py-4 px-4 text-sm text-slate-600"></td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr class="max-w-2xl">
+                        {{-- Size --}}
+                        <td class="py-4 px-4 text-sm text-slate-600">
+                            <select name="" id=""
+                                class="text-sm rounded-lg block w-full p-2.5 bg-slate-600 border-gray-600 placeholder-gray-400 text-white focus:ring-gray-500 focus:border-gray-500">
+                                <option value="">Small</option>
+                                <option value="">Medium</option>
+                                <option value="">Large</option>
+                            </select>
+                        </td>
+                        <td class="py-4 px-4 text-sm text-slate-600">
+                            <button
+                                class="text-sm rounded-lg block w-full p-2.5 bg-slate-600 border-gray-600 placeholder-gray-400 text-white focus:ring-gray-500 focus:border-gray-500">Add
+                                to cart</button>
+                        </td>
+                        {{-- Deze $sum moet later $totalSum heten ofzo. Berekening komt later --}}
+                        <td class="py-4 px-4 text-sm text-slate-600">Total price: € {{ $sum }}
                         </td>
                     </tr>
                 </tbody>
