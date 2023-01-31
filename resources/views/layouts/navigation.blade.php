@@ -16,31 +16,23 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     @hasanyrole('employee|admin')
-                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                            <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index', 'users.edit', 'users.create', 'users.destroy')">
-                                {{ __('Users') }}
-                            </x-nav-link>
-                        </div>
-                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                            <x-nav-link :href="route('ingredients.index')" :active="request()->routeIs(
-                                'ingredients.index',
-                                'ingredients.edit',
-                                'ingredients.create',
-                                'ingredients.destroy',
-                            )">
-                                {{ __('Ingredients') }}
-                            </x-nav-link>
-                        </div>
-                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                            <x-nav-link :href="route('units.index')" :active="request()->routeIs('units.index', 'units.edit', 'units.create', 'units.destroy')">
-                                {{ __('Units') }}
-                            </x-nav-link>
-                        </div>
-                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                            <x-nav-link :href="route('pizzas.index')" :active="request()->routeIs('pizzas.index')">
-                                {{ __('Pizzas') }}
-                            </x-nav-link>
-                        </div>
+                        <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index', 'users.edit', 'users.create', 'users.destroy')">
+                            {{ __('Users') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('ingredients.index')" :active="request()->routeIs(
+                            'ingredients.index',
+                            'ingredients.edit',
+                            'ingredients.create',
+                            'ingredients.destroy',
+                        )">
+                            {{ __('Ingredients') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('units.index')" :active="request()->routeIs('units.index', 'units.edit', 'units.create', 'units.destroy')">
+                            {{ __('Units') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('pizzas.index')" :active="request()->routeIs('pizzas.index')">
+                            {{ __('Pizzas') }}
+                        </x-nav-link>
                     @endrole
                 </div>
 
