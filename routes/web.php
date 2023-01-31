@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('pizzas.index');
+    return redirect('dashboard');
 });
 
 Route::resources([
