@@ -7,8 +7,8 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <table class=" ring-1 ring-black ring-opacity-20 rounded-lg">
-                <thead class="bg-slate-600 ">
+            <table class="ring-1 ring-black ring-opacity-20 rounded-lg">
+                <thead class="bg-slate-600">
                     <tr>
                         <th scope="col"
                             class="px-4 py-5 text-left text-sm font-medium uppercase text-slate-50 rounded-tl-lg">
@@ -20,9 +20,9 @@
                         <th scope="col" class="px-4 py-5 text-left text-sm font-medium uppercase text-slate-50">
                             Unit
                         </th>
-                        <th scope="col" class="px-4 py-5 rounded-tr-lg">
-                            <a href="{{ route('ingredients.create') }}"
-                                class="text-slate-50 hover:text-slate-300 text-sm font-medium uppercase">
+                        <th scope="col"
+                            class="px-4 py-5 text-left rounded-tr-lg text-slate-50 hover:text-slate-300 text-sm font-medium uppercase">
+                            <a href="{{ route('ingredients.create') }}">
                                 Add ingredient
                             </a>
                         </th>
