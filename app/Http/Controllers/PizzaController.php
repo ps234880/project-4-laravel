@@ -95,7 +95,7 @@ class PizzaController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|max:15',
+            'name' => 'required|max:20',
         ]);
         Pizza::find($id)->update($request->only(['name']));
         return redirect('pizzas')->with('success', 'Pizza updated.');
