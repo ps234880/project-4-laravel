@@ -34,16 +34,16 @@
                         </td>
                     </tr>
                     <tr class="max-w-2xl">
-                        <td class="px-4 text-sm text-slate-600">Extra ingredients:
+                        <td class="px-4 text-sm text-slate-600">Remove ingredients:
                         </td>
                         <td class="px-4 text-sm text-slate-600">
                         </td>
                     </tr>
                     <tr class="max-w-2xl">
-                        {{-- Extra ingredients --}}
+                        {{-- Remove ingredients --}}
                         <td class="px-4 text-sm text-slate-600">
-                            @foreach ($ingredients as $ingredient)
-                                <input type="checkbox" name="ingredients[]" value=""> {{ $ingredient->name }} - €
+                            @foreach ($pizza->ingredients as $ingredient)
+                                <input type="checkbox" name="ingredients[]" value=""> {{ $ingredient->name }} €
                                 {{ $ingredient->price }}
                                 <br>
                             @endforeach
@@ -54,16 +54,16 @@
                 </tbody>
                 <tbody>
                     <tr class="max-w-2xl">
-                        <td class="pt-4 px-4 text-sm text-slate-600">Remove ingredients:
+                        <td class="pt-4 px-4 text-sm text-slate-600">Extra ingredients:
                         </td>
                         <td class="pt-4 text-sm text-slate-600">
                         </td>
                     </tr>
                     <tr class="max-w-2xl">
-                        {{-- Remove ingredients --}}
+                        {{-- Extra ingredients --}}
                         <td class="px-4 text-sm text-slate-600">
-                            @foreach ($pizza->ingredients as $ingredient)
-                                <input type="checkbox" name="ingredients[]" value=""> {{ $ingredient->name }} €
+                            @foreach ($ingredients as $ingredient)
+                                <input type="checkbox" name="ingredients[]" value=""> {{ $ingredient->name }} - €
                                 {{ $ingredient->price }}
                                 <br>
                             @endforeach
