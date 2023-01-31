@@ -69,6 +69,7 @@ class PizzaController extends Controller
             $sum += $ingredient->price;
         }
 
+        // Testing
         $totalSum = 0;
         foreach ($pizza->ingredients as $ingredient) {
             $totalSum += $ingredient->price;
