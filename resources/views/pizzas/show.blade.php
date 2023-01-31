@@ -86,7 +86,7 @@
                                 class="text-sm rounded-lg block w-full p-2.5 bg-slate-600 border-gray-600 placeholder-gray-400 text-white focus:ring-gray-500 focus:border-gray-500">
                         </td>
                         {{-- Deze $sum moet later $totalSum heten ofzo. Berekening komt later --}}
-                        <td class="py-2 px-4 text-sm text-slate-600">Total price: € {{ $sum }}
+                        <td class="py-2 px-4 text-sm text-slate-600">Total price: € {{ $totalSum }}
                         </td>
                     </tr>
                 </tbody>

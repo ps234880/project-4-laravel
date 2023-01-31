@@ -69,7 +69,12 @@ class PizzaController extends Controller
             $sum += $ingredient->price;
         }
 
-        return view('pizzas.show', compact('pizza', 'ingredients', 'sum'));
+        $totalSum = 0;
+        foreach ($pizza->ingredients as $ingredient) {
+            $totalSum += $ingredient->price;
+        }
+
+        return view('pizzas.show', compact('pizza', 'ingredients', 'sum', 'totalSum'));
     }
 
     /**
