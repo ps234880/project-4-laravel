@@ -7,6 +7,39 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            {{-- Pizzas --}}
+            @foreach ($pizzas as $pizza)
+                <table class=" ring-1 ring-black ring-opacity-20 rounded-lg">
+                    <thead class="bg-slate-600">
+                        <tr>
+                            <th class="px-4 py-5 text-left text-sm font-medium uppercase text-slate-50 rounded-t-lg">
+                                pizza {{ $pizza->name }} - medium - € prijs
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            {{-- Pizza ingredients --}}
+                            <td class="px-4 py-2 text-sm text-slate-600 text-left font-medium">
+                                @foreach ($pizza->ingredients as $ingredient)
+                                    {{ $ingredient->name }},
+                                @endforeach
+                            </td>
+                        </tr>
+                        <tr class="h-8">
+                            <th class="p-0 justify-between flex">
+                                <button
+                                    class="px-4 py-2 bg-gray-300 rounded-bl-lg font-semibold text-xs text-gray-800 uppercase tracking-widest hover:bg-white focus:bg-white active:bg-gray-300 transition ease-in-out duration-150">Customize
+                                    Pizza</button>
+                                <button
+                                    class="px-4 py-2  bg-gray-300 rounded-br-lg font-semibold text-xs text-gray-800 uppercase tracking-widest hover:bg-white focus:bg-white active:bg-gray-300 transition ease-in-out duration-150">Add
+                                    To Cart</button>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+            @endforeach
+
             <table class=" ring-1 ring-black ring-opacity-20 rounded-lg">
                 <thead class="bg-slate-600 ">
                     <tr>
@@ -22,15 +55,15 @@
                         </th>
                     </tr>
                 </thead>
-                <!-- Pizzas -->
+                {{-- Pizzas --}}
                 <tbody>
                     @foreach ($pizzas as $pizza)
                         <tr>
-                            <!-- Name -->
+                            {{-- Name --}}
                             <td class="py-4 px-4 text-sm text-slate-600">
                                 <a href="{{ route('pizzas.show', $pizza->id) }}">{{ $pizza->name }}</a>
                             </td>
-                            <!-- Edit and delete -->
+                            {{-- Edit and delete --}}
                             <td class="py-4 px-4 text-sm font-medium flex justify-between">
                                 <a href="{{ route('pizzas.edit', $pizza->id) }}"
                                     class="text-indigo-600 hover:text-indigo-900">Edit</a>
@@ -46,6 +79,12 @@
             </table>
         </div>
     </div>
+
+    <x-slot name="footer">
+        <h2 class="font-semibold text-l text-gray-600  leading-tight">
+            {{ __('Stonks Pizza') }}
+        </h2>
+    </x-slot>
 </x-app-layout>
 
 {{-- @extends('pizzas.layout')

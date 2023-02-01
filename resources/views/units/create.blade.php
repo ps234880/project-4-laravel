@@ -23,7 +23,7 @@
                         <div>{{ $message }}</div>
                     @enderror
                 </div>
-                
+
                 {{-- Back and create --}}
                 <div class="flex items-center justify-start space-x-4">
                     <a href="{{ route('units.index') }}" class="text-slate-600 text-sm">Back</a>
@@ -35,4 +35,10 @@
             </form>
         </div>
     </div>
+    
+    <x-slot name="footer">
+        <h2 class="font-semibold text-l text-gray-600  leading-tight">
+            {{ __('Stonks Pizza') }}
+        </h2>
+    </x-slot>
 </x-app-layout>

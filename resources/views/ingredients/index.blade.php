@@ -28,25 +28,25 @@
                         </th>
                     </tr>
                 </thead>
-                <!-- Ingredients -->
+                {{-- Ingredients --}}
                 <tbody>
                     @foreach ($ingredients as $ingredient)
                         <tr>
-                            <!-- Name -->
+                            {{-- Name --}}
                             <td class="py-4 px-4 text-sm text-slate-600">
                                 {{ $ingredient->name }}
                             </td>
-                            <!-- Price -->
+                            {{-- Price --}}
                             <td class="py-4 px-4 text-sm text-slate-600">
                                 € {{ $ingredient->price }}
                             </td>
-                            <!-- Price -->
+                            {{-- Unit --}}
                             <td class="py-4 px-4 text-sm text-slate-600">
                                 @isset($ingredient->unit->name)
                                     {{ $ingredient->unit->name }}
                                 @endisset
                             </td>
-                            <!-- Edit and delete -->
+                            {{-- Edit and delete --}}
                             <td class="py-4 px-4 text-sm font-medium flex justify-between">
                                 <a href="{{ route('ingredients.edit', $ingredient->id) }}"
                                     class="text-indigo-600 hover:text-indigo-900">Edit</a>

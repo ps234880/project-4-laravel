@@ -22,15 +22,15 @@
                         </th>
                     </tr>
                 </thead>
-                <!-- units -->
+                {{-- Units --}}
                 <tbody>
                     @foreach ($units as $unit)
                         <tr>
-                            <!-- Name -->
+                            {{-- name --}}
                             <td class="py-4 px-4 text-sm text-slate-600">
                                 {{ $unit->name }}
                             </td>
-                            <!-- Edit and delete -->
+                            {{-- Edit and delete --}}
                             <td class="py-4 px-4 text-sm font-medium flex justify-between">
                                 <a href="{{ route('units.edit', $unit->id) }}"
                                     class="text-indigo-600 hover:text-indigo-900">Edit</a>
@@ -46,4 +46,10 @@
             </table>
         </div>
     </div>
+
+    <x-slot name="footer">
+        <h2 class="font-semibold text-l text-gray-600  leading-tight">
+            {{ __('Stonks Pizza') }}
+        </h2>
+    </x-slot>
 </x-app-layout>

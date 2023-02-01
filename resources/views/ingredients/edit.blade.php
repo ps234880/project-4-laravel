@@ -58,8 +58,7 @@
             </form>
         </div>
     </div>
-</x-app-layout>
-
+    
     <x-slot name="footer">
         <h2 class="font-semibold text-l text-gray-600  leading-tight">
             {{ __('Stonks Pizza') }}
