@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             {{-- Pizzas --}}
-            <div class="grid grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
                 @foreach ($pizzas as $pizza)
                     <table class="ring-1 ring-black ring-opacity-20 rounded-lg">
                         <thead class="bg-slate-600">
@@ -43,7 +43,8 @@
                 @endforeach
             </div>
 
-            <table class=" ring-1 ring-black ring-opacity-20 rounded-lg">
+            {{-- Pizza crud --}}
+            <table class="ring-1 ring-black ring-opacity-20 rounded-lg mt-4">
                 <thead class="bg-slate-600 ">
                     <tr>
                         <th scope="col" class="px-4 py-5 text-left text-sm uppercase text-slate-50 rounded-tl-lg">
