@@ -27,9 +27,18 @@
             @endif
 
             <!-- Page Content -->
-            <main>
+            <main class="flex-grow">
                 {{ $slot }}
             </main>
+
+            <!-- Page Footing -->
+            @if (isset($footer))
+                <footer class="bg-white shadow sticky top-[100vh]">
+                    <div class="max-w-7xl mx-auto my-auto py-4 px-4 sm:px-6 lg:px-8">
+                        {{ $footer }}
+                    </div>
+                </footer>
+            @endif            
         </div>
     </body>
 </html>

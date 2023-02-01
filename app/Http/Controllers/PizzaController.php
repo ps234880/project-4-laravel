@@ -23,7 +23,7 @@ class PizzaController extends Controller
     {
         $pizzas = Pizza::orderBy('name')->paginate(10);
         $ingredients = Ingredient::all();
-
+        
         return view('pizzas.index', compact('pizzas', 'ingredients'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
     }

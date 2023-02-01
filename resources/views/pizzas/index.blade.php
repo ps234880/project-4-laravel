@@ -50,7 +50,7 @@
 
 {{-- @extends('pizzas.layout')
 
-@section('content')
+@section('content') 
     <!-- NAVIGATION -->
     <header>
         <a class="active-link" href="#">Stonks-pizza</a>
@@ -190,4 +190,4 @@
 
     <!-- JS SCRIPTS -->
     <script src="js/script.js"></script>
-@endsection --> --}}
+@endsection --}}

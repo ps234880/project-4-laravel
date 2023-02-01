@@ -4,6 +4,12 @@
             {{ __('Pizzas') }}
         </h2>
     </x-slot>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-600  leading-tight">
+            {{ __('Pizzas') }}
+        </h2>
+    </x-slot>
 
     <div class="max-w-4xl mx-auto mt-5">
         <div class="px-4 sm:px-6 lg:px-8">
@@ -80,4 +86,11 @@
             </form>
         </div>
     </div>
+</x-app-layout>
+
+    <x-slot name="footer">
+        <h2 class="font-semibold text-l text-gray-600  leading-tight">
+            {{ __('Stonks Pizza') }}
+        </h2>
+    </x-slot>
 </x-app-layout>
