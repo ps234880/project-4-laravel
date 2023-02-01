@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-600  leading-tight">
+        <h2 class="font-semibold text-xl text-gray-600 leading-tight">
             {{ __('Pizzas') }}
         </h2>
     </x-slot>
@@ -8,48 +8,50 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             {{-- Pizzas --}}
-            @foreach ($pizzas as $pizza)
-                <table class=" ring-1 ring-black ring-opacity-20 rounded-lg">
-                    <thead class="bg-slate-600">
-                        <tr>
-                            <th class="px-4 py-5 text-left text-sm font-medium uppercase text-slate-50 rounded-t-lg">
-                                pizza {{ $pizza->name }} - medium - € prijs
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
+            <div class="grid grid-cols-3 gap-4">
+                @foreach ($pizzas as $pizza)
+                    <table class="ring-1 ring-black ring-opacity-20 rounded-lg">
+                        <thead class="bg-slate-600">
+                            <tr class="max-w-2xl">
+                                <td class="px-4 py-5 text-left text-sm uppercase text-slate-50 rounded-t-lg">
+                                    pizza {{ $pizza->name }} $ 8.50
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
                             {{-- Pizza ingredients --}}
-                            <td class="px-4 py-2 text-sm text-slate-600 text-left font-medium">
-                                @foreach ($pizza->ingredients as $ingredient)
-                                    {{ $ingredient->name }},
-                                @endforeach
-                            </td>
-                        </tr>
-                        <tr class="h-8">
-                            <th class="p-0 justify-between flex">
-                                <button
-                                    class="px-4 py-2 bg-gray-300 rounded-bl-lg font-semibold text-xs text-gray-800 uppercase tracking-widest hover:bg-white focus:bg-white active:bg-gray-300 transition ease-in-out duration-150">Customize
-                                    Pizza</button>
-                                <button
-                                    class="px-4 py-2  bg-gray-300 rounded-br-lg font-semibold text-xs text-gray-800 uppercase tracking-widest hover:bg-white focus:bg-white active:bg-gray-300 transition ease-in-out duration-150">Add
-                                    To Cart</button>
-                            </th>
-                        </tr>
-                    </tbody>
-                </table>
-            @endforeach
+                            <tr>
+                                <td class="px-4 py-5 text-sm text-slate-600 text-left">
+                                    @foreach ($pizza->ingredients as $ingredient)
+                                        {{ $ingredient->name }}
+                                    @endforeach
+                                </td>
+                            </tr>
+                            {{-- Add & customize --}}
+                            <tr>
+                                <td class="px-4 py-2 text-sm text-slate-600 text-left flex gap-2">
+                                    <a href="{{ route('pizzas.show', $pizza->id) }}"
+                                        class="px-4 py-2 w-full text-center bg-gray-300 rounded-lg font-semibold text-xs text-gray-800 uppercase tracking-widest hover:bg-white focus:bg-white active:bg-gray-300 transition ease-in-out duration-150">Customize
+                                        Pizza</a>
+                                    <a href="{{ route('pizzas.show', $pizza->id) }}"
+                                        class="px-4 py-2 w-full text-center bg-gray-300 rounded-lg font-semibold text-xs text-gray-800 uppercase tracking-widest hover:bg-white focus:bg-white active:bg-gray-300 transition ease-in-out duration-150">Add
+                                        to cart</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                @endforeach
+            </div>
 
             <table class=" ring-1 ring-black ring-opacity-20 rounded-lg">
                 <thead class="bg-slate-600 ">
                     <tr>
-                        <th scope="col"
-                            class="px-4 py-5 text-left text-sm font-medium uppercase text-slate-50 rounded-tl-lg">
+                        <th scope="col" class="px-4 py-5 text-left text-sm uppercase text-slate-50 rounded-tl-lg">
                             Name
                         </th>
                         <th scope="col" class="px-4 py-5 rounded-tr-lg">
                             <a href="{{ route('pizzas.create') }}"
-                                class="text-slate-50 hover:text-slate-300 text-sm font-medium uppercase">
+                                class="text-slate-50 hover:text-slate-300 text-sm uppercase">
                                 Add Pizza
                             </a>
                         </th>
