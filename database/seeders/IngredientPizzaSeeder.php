@@ -17,44 +17,44 @@ class IngredientPizzaSeeder extends Seeder
     {
         DB::table('ingredient_pizza')->insert([
             'ingredient_id' => 3,
-            'pizza_id' => 1,
+            'pizza_id' => 1
         ]);
         DB::table('ingredient_pizza')->insert([
             'ingredient_id' => 6,
-            'pizza_id' => 1,
+            'pizza_id' => 1
         ]);
         DB::table('ingredient_pizza')->insert([
             'ingredient_id' => 3,
-            'pizza_id' => 2,
+            'pizza_id' => 2
         ]);
         DB::table('ingredient_pizza')->insert([
             'ingredient_id' => 6,
-            'pizza_id' => 2,
+            'pizza_id' => 2
         ]);
         DB::table('ingredient_pizza')->insert([
             'ingredient_id' => 3,
-            'pizza_id' => 3,
+            'pizza_id' => 3
         ]);
         DB::table('ingredient_pizza')->insert([
             'ingredient_id' => 6,
-            'pizza_id' => 3,
+            'pizza_id' => 3
         ]);
 
         DB::table('ingredient_pizza')->insert([
             'ingredient_id' => 3,
-            'pizza_id' => 4,
+            'pizza_id' => 4
         ]);
         DB::table('ingredient_pizza')->insert([
             'ingredient_id' => 6,
-            'pizza_id' => 4,
+            'pizza_id' => 4
         ]);
         DB::table('ingredient_pizza')->insert([
             'ingredient_id' => 3,
-            'pizza_id' => 5,
+            'pizza_id' => 5
         ]);
         DB::table('ingredient_pizza')->insert([
             'ingredient_id' => 6,
-            'pizza_id' => 5,
+            'pizza_id' => 5
         ]);
     }
 }
