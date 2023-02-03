@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Models\Pizza;
 
 class PizzaSeeder extends Seeder
 {
@@ -15,23 +15,23 @@ class PizzaSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('pizzas')->insert([
+        Pizza::create([
             'name' => "Hawaii",
         ]);
 
-        DB::table('pizzas')->insert([
+        Pizza::create([
             'name' => "Margherita",
         ]);
 
-        DB::table('pizzas')->insert([
+        Pizza::create([
             'name' => "Quattro formaggi",
         ]);
 
-        DB::table('pizzas')->insert([
+        Pizza::create([
             'name' => "Pepperoni",
         ]);
 
-        DB::table('pizzas')->insert([
+        Pizza::create([
             'name' => "Kiwinini",
         ]);
     }
