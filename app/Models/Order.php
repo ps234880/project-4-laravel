@@ -15,7 +15,6 @@ class Order extends Model
         'receipt',
         'orderstatus_id',
         'user_id',
-
     ];
 
     public function user()
