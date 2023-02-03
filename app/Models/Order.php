@@ -13,9 +13,8 @@ class Order extends Model
     protected $table = 'orders';
     public $timestamps = false;
     protected $fillable = [
-        'receipt',
-        'orderstatus_id',
         'user_id',
+        'orderstatus_id',
     ];
 
     public function user()

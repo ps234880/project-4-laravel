@@ -89,7 +89,7 @@ class IngredientController extends Controller
             'price' => 'required',
         ]);
         Ingredient::find($id)->update($request->only(['name', 'price', 'unit_id']));
-        return redirect('/ingredients')->with('success', 'Ingredient updated.');
+        return redirect('ingredients')->with('success', 'Ingredient updated.');
     }
 
     /**
@@ -101,6 +101,6 @@ class IngredientController extends Controller
     public function destroy($id)
     {
         Ingredient::destroy($id);
-        return redirect('/ingredients')->with('success', 'Ingredient deleted.');
+        return redirect('ingredients')->with('success', 'Ingredient deleted.');
     }
 }

@@ -22,9 +22,12 @@
                                 <tr>
                                     <td class="px-4 py-5 text-sm text-slate-600 text-left">
                                         Order status: {{ $order->orderstatus->name }}
+                                        <a href="{{ route('orders.edit', $order->id) }}"
+                                            class="text-indigo-600 hover:text-indigo-900">Edit</a>
                                     </td>
                                 </tr>
                             @endforeach
+
                             @foreach ($order->orderlines as $orderline)
                                 <tr>
                                     <td class="px-4 py-5 text-sm text-slate-600 text-left">

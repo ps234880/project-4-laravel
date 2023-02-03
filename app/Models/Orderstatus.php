@@ -13,7 +13,7 @@ class Orderstatus extends Model
     protected $table = 'orderstatus';
     public $timestamps = false;
     protected $fillable = [
-        'status'
+        'name'
     ];
 
     public function user()

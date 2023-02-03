@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\OrderLine;
+use App\Models\Orderstatus;
 
 class OrderController extends Controller
 {
@@ -62,7 +63,10 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $order = Order::find($id);
+        $user = User::find($id);
+        $orderstatuses = Orderstatus::all();
+        return view('orders.edit', compact('user', 'order', 'orderstatuses'));
     }
 
     /**
@@ -74,7 +78,8 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Order::find($id)->update($request->only(['orderstatus_id']));
+        return redirect('orders')->with('success', 'Orderstatus updated.');
     }
 
     /**
