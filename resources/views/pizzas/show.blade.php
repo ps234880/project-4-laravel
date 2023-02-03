@@ -78,9 +78,9 @@
                         <td class="py-2 px-4 text-sm text-slate-600 flex gap-1">
                             <select name="" id=""
                                 class="text-sm rounded-lg block w-full p-2.5 bg-slate-600 border-gray-600 placeholder-gray-400 text-white focus:ring-gray-500 focus:border-gray-500">
-                                <option value="">Small</option>
-                                <option value="">Medium</option>
-                                <option value="">Large</option>
+                                @foreach ($sizes as $size)
+                                    <option value="{{ $size->id }}">{{ $size->name }}</option>
+                                @endforeach
                             </select>
                             <input type="number" name="" id="" placeholder="Enter amount"
                                 class="text-sm rounded-lg block w-full p-2.5 bg-slate-600 border-gray-600 placeholder-gray-400 text-white focus:ring-gray-500 focus:border-gray-500">
@@ -103,7 +103,7 @@
             </table>
         </div>
     </div>
-    
+
     <x-slot name="footer">
         <h2 class="font-semibold text-l text-gray-600  leading-tight">
             {{ __('Stonks Pizza') }}

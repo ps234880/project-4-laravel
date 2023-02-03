@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Ingredient;
+use App\Models\Size;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,7 +23,8 @@ class DatabaseSeeder extends Seeder
             PizzaSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
-            IngredientPizzaSeeder::class
+            IngredientPizzaSeeder::class,
+            SizeSeeder::class
         ]);
     }
 }
