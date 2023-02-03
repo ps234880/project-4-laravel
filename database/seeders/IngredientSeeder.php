@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Ingredient;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class IngredientSeeder extends Seeder
 {
@@ -15,47 +15,47 @@ class IngredientSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('ingredients')->insert([
+        Ingredient::create([
             'name' => "Cheese",
             'price' => 1.00,
             'unit_id' => 1,
         ]);
-        DB::table('ingredients')->insert([
+        Ingredient::create([
             'name' => "Basil",
             'price' => 0.20,
             'unit_id' => 1,
         ]);
-        DB::table('ingredients')->insert([
+        Ingredient::create([
             'name' => "Tomato sauce",
             'price' => 1.50,
             'unit_id' => 1,
         ]);
-        DB::table('ingredients')->insert([
+        Ingredient::create([
             'name' => "Ham",
             'price' => 1.00,
             'unit_id' => 2,
         ]);
-        DB::table('ingredients')->insert([
+        Ingredient::create([
             'name' => "Egg",
             'price' => 0.50,
             'unit_id' => 3,
         ]);
-        DB::table('ingredients')->insert([
+        Ingredient::create([
             'name' => "Pizza dough",
             'price' => 2.00,
             'unit_id' => 1,
         ]);
-        DB::table('ingredients')->insert([
+        Ingredient::create([
             'name' => "Mushrooms",
             'price' => 0.50,
             'unit_id' => 2,
         ]);
-        DB::table('ingredients')->insert([
+        Ingredient::create([
             'name' => "Chicken",
             'price' => 1.00,
             'unit_id' => 1,
         ]);
-        DB::table('ingredients')->insert([
+        Ingredient::create([
             'name' => "Pineapple",
             'price' => 0.50,
             'unit_id' => 1,
