@@ -24,9 +24,9 @@ class UserSeeder extends Seeder
             'postal_code' => '5523 LN',
             'phone_number' => '0612345678',
             'email_verified_at' => now(),
-            'password' => ' ',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
         ])->assignRole('admin', 'admin');
-        
+
         User::create([
             'name' => 'Tong Sheng Zhang',
             'email' => 'TS@gmail.com',
