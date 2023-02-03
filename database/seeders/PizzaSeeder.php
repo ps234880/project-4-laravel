@@ -16,23 +16,23 @@ class PizzaSeeder extends Seeder
     public function run()
     {
         Pizza::create([
-            'name' => "Hawaii",
+            'name' => "Hawaii"
         ]);
 
         Pizza::create([
-            'name' => "Margherita",
+            'name' => "Margherita"
         ]);
 
         Pizza::create([
-            'name' => "Quattro formaggi",
+            'name' => "Quattro formaggi"
         ]);
 
         Pizza::create([
-            'name' => "Pepperoni",
+            'name' => "Pepperoni"
         ]);
 
         Pizza::create([
-            'name' => "Kiwinini",
+            'name' => "Kiwinini"
         ]);
     }
 }
