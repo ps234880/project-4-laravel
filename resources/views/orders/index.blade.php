@@ -1,29 +1,41 @@
-@extends('pizzas.layout')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-600  leading-tight">
+            {{ __('Orders') }}
+        </h2>
+    </x-slot>
 
-@section('content')
-<!-- NAVIGATION -->
-<header>
-    <a href="pizzas">Stonks-pizza</a>
-</header>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-<!-- MESSAGE IF DATABASE CONNECTION SUCCESSFULL -->
-@if ($message = Session::get('success'))
-    <div class="alert alert-success">
-        <p>{{ $message }}</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                @foreach ($users as $user)
+                    <table class="ring-1 ring-black ring-opacity-20 rounded-lg">
+                        <thead class="bg-slate-600">
+                            <tr class="max-w-2xl">
+                                <td class="px-4 py-5 text-left text-sm uppercase text-slate-50 rounded-t-lg">
+                                    {{ $user->name }} 
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{-- Pizza ingredients --}}
+                            <tr>
+                                <td class="px-4 py-5 text-sm text-slate-600 text-left">
+                                  
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                @endforeach
+            </div>
+
+        </div>
     </div>
-@endif
 
-<!-- CONTENT -->
-@foreach ($users as $user)
-    {{ $user->orders[0]->receipt }}
-@endforeach
-
-<!-- FOOTER -->
-<footer>
-    <p>Copyright Stonks-pizza 2023-2024</p>
-</footer>
-
-<!-- JS SCRIPTS -->
-<script src="js/script.js"></script>
-
-@endsection
+    <x-slot name="footer">
+        <h2 class="font-semibold text-l text-gray-600  leading-tight">
+            {{ __('Stonks Pizza') }}
+        </h2>
+    </x-slot>
+</x-app-layout>
