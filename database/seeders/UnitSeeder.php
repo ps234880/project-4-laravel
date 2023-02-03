@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Unit;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class UnitSeeder extends Seeder
 {
@@ -15,15 +15,15 @@ class UnitSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('units')->insert([
+        Unit::create([
             'name' => "10 pieces",
         ]);
 
-        DB::table('units')->insert([
+        Unit::create([
             'name' => "200 gram",
         ]);
         
-        DB::table('units')->insert([
+        Unit::create([
             'name' => "1 piece",
         ]);
     }
