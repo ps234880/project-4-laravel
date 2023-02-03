@@ -11,6 +11,7 @@ class Orderstatus extends Model
 {
     use HasFactory;
     protected $table = 'orderstatus';
+    public $timestamps = false;
     protected $fillable = [
         'status'
     ];
