@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('measurements', function (Blueprint $table) {
+        Schema::create('sizes', function (Blueprint $table) {
             $table->id('id');
-            $table->integer('amount');
-            $table->string('size');
+            $table->string('name');
         });
     }
 
