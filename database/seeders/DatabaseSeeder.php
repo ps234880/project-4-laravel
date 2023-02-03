@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             PizzaSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
+            IngredientPizzaSeeder::class
         ]);
     }
 }
