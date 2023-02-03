@@ -24,7 +24,9 @@ return new class extends Migration
             $table->unsignedBigInteger('pizza_id')->index();
             $table->foreign('pizza_id')->references('id')->on('pizzas')->cascadeOnDelete()->cascadeOnUpdate();
 
-            $table->string('size');
+            $table->unsignedBigInteger('size_id')->index();
+            $table->foreign('size_id')->references('id')->on('sizes')->cascadeOnDelete()->cascadeOnUpdate();
+
             $table->unsignedBigInteger('amount');
         });
     }

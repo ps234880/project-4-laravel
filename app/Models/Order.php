@@ -11,6 +11,7 @@ class Order extends Model
 {
     use HasFactory;
     protected $table = 'orders';
+    public $timestamps = false;
     protected $fillable = [
         'receipt',
         'orderstatus_id',
@@ -20,5 +21,15 @@ class Order extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function orderstatus()
+    {
+        return $this->belongsTo(Orderstatus::class);
+    }
+
+    public function orderlines()
+    {
+        return $this->hasMany(OrderLine::class);
     }
 }

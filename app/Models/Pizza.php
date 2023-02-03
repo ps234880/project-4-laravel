@@ -17,4 +17,9 @@ class Pizza extends Model
     {
         return $this->belongsToMany(Ingredient::class);
     }
+
+    public function order()
+    {
+        return $this->hasOne(OrderLine::class);
+    }
 }

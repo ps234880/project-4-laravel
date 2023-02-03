@@ -26,7 +26,9 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             IngredientPizzaSeeder::class,
             SizeSeeder::class,
-            OrderStatusSeeder::class
+            OrderStatusSeeder::class,
+            OrderSeeder::class,
+            OrderLineSeeder::class
         ]);
     }
 }

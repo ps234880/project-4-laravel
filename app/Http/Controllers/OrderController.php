@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\OrderLine;
 
 class OrderController extends Controller
 {
@@ -17,7 +18,8 @@ class OrderController extends Controller
     {
         $orders = Order::all();
         $users = User::all();
-        return view('orders.index', compact('users', 'orders'));
+        $orderlines = OrderLine::all();
+        return view('orders.index', compact('users', 'orders', 'orderlines'));
     }
 
     /**

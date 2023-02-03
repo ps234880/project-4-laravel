@@ -11,4 +11,14 @@ class Size extends Model
     protected $table = 'sizes';
     protected $fillable = ['name'];
     public $timestamps = false;
+
+    public function ingredient()
+    {
+        return $this->hasOne(Ingredient::class);
+    }
+
+    public function orderline()
+    {
+        return $this->hasOne(orderline::class);
+    }
 }
