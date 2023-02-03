@@ -30,7 +30,7 @@
                         </td>
                         {{-- Pizza price --}}
                         <td class="py-4 px-4 text-sm text-slate-600">
-                            € {{ $sum }}
+                            € {{ $sum = number_format((float) $sum, 2) }}
                         </td>
                     </tr>
                     <tr class="max-w-2xl">
@@ -44,7 +44,7 @@
                         <td class="px-4 text-sm text-slate-600">
                             @foreach ($pizza->ingredients as $ingredient)
                                 <input type="checkbox" name="ingredients[]" value=""> {{ $ingredient->name }} €
-                                {{ $ingredient->price }}
+                                {{ $ingredient->price = number_format((float) $ingredient->price, 2) }}
                                 <br>
                             @endforeach
                         </td>
@@ -64,7 +64,7 @@
                         <td class="px-4 text-sm text-slate-600">
                             @foreach ($ingredients as $ingredient)
                                 <input type="checkbox" name="ingredients[]" value=""> {{ $ingredient->name }} - €
-                                {{ $ingredient->price }}
+                                {{ $ingredient->price = number_format((float) $ingredient->price, 2) }}
                                 <br>
                             @endforeach
                         </td>
