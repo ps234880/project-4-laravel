@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pizza;
 use App\Models\Ingredient;
+use App\Models\Size;
 use Illuminate\Http\Request;
 
 class PizzaController extends Controller
@@ -30,7 +31,7 @@ class PizzaController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *  
+     *
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -63,6 +64,7 @@ class PizzaController extends Controller
     {
         $pizza = Pizza::find($id);
         $ingredients = Ingredient::all();
+        $sizes = Size::all();
 
         $sum = 0;
         foreach ($pizza->ingredients as $ingredient) {
@@ -75,7 +77,7 @@ class PizzaController extends Controller
             $totalSum += $ingredient->price;
         }
 
-        return view('pizzas.show', compact('pizza', 'ingredients', 'sum', 'totalSum'));
+        return view('pizzas.show', compact('pizza', 'ingredients', 'sizes', 'sum', 'totalSum'));
     }
 
     /**
