@@ -10,11 +10,18 @@
             {{-- Pizzas --}}
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 @foreach ($pizzas as $pizza)
+                    @php
+                        $sum = 0;
+                        foreach ($pizza->ingredients as $ingredient) {
+                            $sum += $ingredient->price;
+                        }
+                        $sum = number_format((float) $sum, 2);
+                    @endphp
                     <table class="ring-1 ring-black ring-opacity-20 rounded-lg">
                         <thead class="bg-slate-600">
                             <tr class="max-w-2xl">
                                 <td class="px-4 py-5 text-left text-sm uppercase text-slate-50 rounded-t-lg">
-                                    pizza {{ $pizza->name }}
+                                    pizza {{ $pizza->name }} - € {{ $sum }}
                                 </td>
                             </tr>
                         </thead>
