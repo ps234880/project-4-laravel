@@ -115,8 +115,20 @@
                         {{ __('Users') }}
                     </x-responsive-nav-link>
 
-                    <x-responsive-nav-link :href="route('pizzas.index')">
+                    <x-responsive-nav-link :href="route('orders.index')">
                         {{ __('Orders') }}
+                    </x-responsive-nav-link>
+
+                    <x-responsive-nav-link :href="route('pizzas.index')">
+                        {{ __('Pizzas') }}
+                    </x-responsive-nav-link>
+
+                    <x-responsive-nav-link :href="route('ingredients.index')">
+                        {{ __('Ingredients') }}
+                    </x-responsive-nav-link>
+
+                    <x-responsive-nav-link :href="route('units.index')">
+                        {{ __('Units') }}
                     </x-responsive-nav-link>
 
                     <!-- Authentication -->
