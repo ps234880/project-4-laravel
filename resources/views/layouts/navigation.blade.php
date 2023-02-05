@@ -19,11 +19,7 @@
                         <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index', 'users.edit', 'users.create', 'users.destroy')">
                             {{ __('Users') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('ingredients.index')" :active="request()->routeIs(
-                            'ingredients.index',
-                            'ingredients.edit',
-                            'ingredients.create',
-                            'ingredients.destroy',
+                        <x-nav-link :href="route('ingredients.index')" :active="request()->routeIs('ingredients.index', 'ingredients.edit', 'ingredients.create', 'ingredients.destroy',
                         )">
                             {{ __('Ingredients') }}
                         </x-nav-link>
@@ -137,15 +133,15 @@
 
                     <!-- Authentication -->
                     <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-
-                        <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                            {{ __('Log Out') }}
-                        </x-responsive-nav-link>
+                    @csrf
+                    <x-responsive-nav-link :href="route('logout')"
+                        onclick="event.preventDefault();
+                                    this.closest('form').submit();">
+                        {{ __('Log Out') }}
+                    </x-responsive-nav-link>
                     </form>
                 </div>
             </div>
         </div>
+    </div>
 </nav>
