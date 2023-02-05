@@ -1,44 +1,47 @@
-// collapse menu https://www.w3schools.com/howto/howto_js_collapsible.asp
-var coll = document.getElementsByClassName("collapsible");
-var i;
+// Price per piece (default medium)
+var PricePerBase = document.getElementById("PricePer").innerHTML;
+var PricePer = document.getElementById("PricePer").innerHTML;
+var Size = 1;
+var ValueAmount = 1;
+var GottenPizzaCosts = JSON.parse(sessionStorage.getItem("Total"));
 
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    }
-  });
+// gets added pizza's from session
+function CreateReceipt() {
+    GottenPizzaCosts = JSON.parse(sessionStorage.getItem("Total"))
+    document.getElementById("Receipt").innerHTML = GottenPizzaCosts;
+    console.log("totaal kost custom pizza = " + GottenPizzaCosts);
 }
 
-// login pagina
-function order() {
-    if (document.getElementById('order').style.display == 'none'){
-        document.getElementById('order').style.display = 'block';
+function AddPizza() {
+    PizzaArray = document.getElementById("Total").innerHTML;
+    sessionStorage.setItem("Total", JSON.stringify(PizzaArray));
+    GottenPizzaCosts = JSON.parse(sessionStorage.getItem("Total"));
+    console.log("totaal kost custom pizza = " + GottenPizzaCosts);
+}
+
+// calcs price
+function GetAmount() {
+    ValueAmount = document.getElementById("Amount").value;
+    var PricePer = document.getElementById("PricePer").innerHTML;
+    document.getElementById("Total").innerHTML = (ValueAmount * PricePer).toFixed(2);
+    GetSize();
+}
+
+function GetSize(SelectedSize) {
+    if (SelectedSize.value == 1) {
+        Size = 0.8;
+        document.getElementById("PricePer").innerHTML = (PricePer * Size).toFixed(2);
+        document.getElementById("Total").innerHTML = (ValueAmount * PricePer * 0.8).toFixed(2);
+    }
+    else if (SelectedSize.value == 2) {
+        Size = 1;
+        document.getElementById("PricePer").innerHTML = (PricePer * Size).toFixed(2);
+        document.getElementById("Total").innerHTML = (ValueAmount * PricePer * Size).toFixed(2);
     }
     else {
-        document.getElementById('order').style.display='none';
+        Size = 1.2;
+        document.getElementById("PricePer").innerHTML = (PricePer * Size).toFixed(2);
+        document.getElementById("Total").innerHTML = (ValueAmount * PricePer * Size).toFixed(2);
     }
 }
 
-// prijsberekening
-function prijsberekening() {
-    if (document.getElementById('aantal').style.display='none'){
-    }
-    else if (document.getElementById('order').style.display='none')
-    {
-        document.getElementById('order').style.display='none';
-    }
-}
-
-function clickCounter() {
-    if (sessionStorage.clickcount) {
-      sessionStorage.clickcount = Number(sessionStorage.clickcount) + 1;
-    } else {
-      sessionStorage.clickcount = 1;
-      }
-    document.getElementById("demo").innerHTML = sessionStorage.clickcount;
-  }

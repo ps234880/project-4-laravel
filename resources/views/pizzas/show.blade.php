@@ -25,12 +25,12 @@
                         {{-- Ingredients --}}
                         <td class="py-4 px-4 text-sm text-slate-600">
                             @foreach ($pizza->ingredients as $ingredient)
-                                {{ $ingredient->name }} |
+                                {{ $ingredient->name }}
                             @endforeach
                         </td>
                         {{-- Pizza price --}}
                         <td class="py-4 px-4 text-sm text-slate-600">
-                            € {{ $sum = number_format((float) $sum, 2) }}
+                            Price per piece: € <p id="PricePer"> {{ $sum = number_format((float) $sum, 2) }}</p>
                         </td>
                     </tr>
                     <tr class="max-w-2xl">
@@ -43,8 +43,8 @@
                         {{-- Remove ingredients --}}
                         <td class="px-4 text-sm text-slate-600">
                             @foreach ($pizza->ingredients as $ingredient)
-                                <input type="checkbox" name="ingredients[]" value=""> {{ $ingredient->name }} €
-                                {{ $ingredient->price = number_format((float) $ingredient->price, 2) }}
+                                <input type="checkbox" name="ingredients" value="{{$ingredient->name}}"> {{ $ingredient->name }} €
+                                -{{ $ingredient->price = number_format((float) $ingredient->price, 2) }}
                                 <br>
                             @endforeach
                         </td>
@@ -63,7 +63,7 @@
                         {{-- Extra ingredients --}}
                         <td class="px-4 text-sm text-slate-600">
                             @foreach ($ingredients as $ingredient)
-                                <input type="checkbox" name="ingredients[]" value=""> {{ $ingredient->name }} - €
+                                <input type="checkbox" name="ingredients" value="{{$ingredient->name}}"> {{ $ingredient->name }} €
                                 {{ $ingredient->price = number_format((float) $ingredient->price, 2) }}
                                 <br>
                             @endforeach
@@ -76,17 +76,24 @@
                     <tr class="max-w-2xl">
                         {{-- Size --}}
                         <td class="py-2 px-4 text-sm text-slate-600 flex gap-1">
-                            <select name="" id=""
+                            <select name="size" id="size" onchange="GetSize(this)" {{-- ERWIN --}}
                                 class="text-sm rounded-lg block w-full p-2.5 bg-slate-600 border-gray-600 placeholder-gray-400 text-white focus:ring-gray-500 focus:border-gray-500">
                                 @foreach ($sizes as $size)
-                                    <option value="{{ $size->id }}">{{ $size->name }}</option>
+                                    @if ($size->id == 2)
+                                        <option selected value="{{ $size->id }}">{{ $size->name }}</option>
+                                    @else
+                                        <option value="{{ $size->id }}">{{ $size->name }}</option>
+                                    @endif
                                 @endforeach
                             </select>
-                            <input type="number" name="" id="" placeholder="Enter amount"
+                            <input type="number" name="Amount" id="Amount" value="1" onkeyup="GetAmount(this)"
+                                placeholder="Enter amount"
                                 class="text-sm rounded-lg block w-full p-2.5 bg-slate-600 border-gray-600 placeholder-gray-400 text-white focus:ring-gray-500 focus:border-gray-500">
-                        </td>
+                            </td>
                         {{-- Deze $sum moet later $totalSum heten ofzo. Berekening komt later --}}
-                        <td class="py-2 px-4 text-sm text-slate-600">Total price: € {{ $totalSum }}
+                        <td class="py-2 px-4 text-sm text-slate-600">Total price: €
+                            <br>
+                            <p id="Total">{{ $sum = number_format((float) $sum, 2) }}</p>
                         </td>
                     </tr>
                 </tbody>
@@ -94,15 +101,17 @@
                     <tr class="max-w-2xl">
                         {{-- Size --}}
                         <td colspan="3" class="py-4 px-4 text-sm text-slate-600">
-                            <button
+                            <button onclick="AddPizza()"
                                 class="text-sm rounded-lg block w-full p-2.5 bg-slate-600 border-gray-600 placeholder-gray-400 text-white focus:ring-gray-500 focus:border-gray-500">Add
-                                to cart</button>
+                                to cart
+                            </button>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
+    <script src="../js/script.js"></script>
 
     <x-slot name="footer">
         <h2 class="font-semibold text-l text-gray-600  leading-tight">
