@@ -1,3 +1,6 @@
+@php
+    session_start();
+@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -38,7 +41,7 @@
                         {{ $footer }}
                     </div>
                 </footer>
-            @endif            
+            @endif
         </div>
     </body>
 </html>

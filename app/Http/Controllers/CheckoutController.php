@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Checkout;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
@@ -36,11 +35,6 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required|max:20',
-        ]);
-        Checkout::create($request->only(['name']));
-        return redirect('checkouts');
     }
 
     /**
@@ -74,11 +68,6 @@ class CheckoutController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'required|max:20',
-        ]);
-        Checkout::find($id)->update($request->only(['name']));
-        return redirect('checkouts')->with('success', 'Pizza updated.');
     }
 
     /**
@@ -89,7 +78,5 @@ class CheckoutController extends Controller
      */
     public function destroy($id)
     {
-        Checkout::destroy($id);
-        return redirect('checkouts')->with('success', 'Pizza deleted.');
     }
 }

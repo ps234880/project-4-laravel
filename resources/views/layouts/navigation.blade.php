@@ -27,11 +27,16 @@
                             {{ __('Units') }}
                         </x-nav-link>
                     @endrole
+                    <x-nav-link :href="route('orders.index')" :active="request()->routeIs('orders.index', 'orders.edit', 'orders.create', 'orders.destroy')">
+                        {{ __('Orders') }}
+                    </x-nav-link>
+
                     <x-nav-link :href="route('pizzas.index')" :active="request()->routeIs('pizzas.index', 'pizzas.edit', 'pizzas.create', 'pizzas.destroy')">
                         {{ __('Pizzas') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('orders.index')" :active="request()->routeIs('orders.index', 'orders.show')">
-                        {{ __('Orders') }}
+
+                    <x-nav-link :href="route('checkouts.index')">
+                        {{ __('Cart') }}
                     </x-nav-link>
                 </div>
 
@@ -130,6 +135,9 @@
                         {{ __('Pizzas') }}
                     </x-responsive-nav-link>
 
+                    <x-nav-link :href="route('checkouts.index')">
+                        {{ __('Cart') }}
+                    </x-nav-link>
 
                     <!-- Authentication -->
                     <form method="POST" action="{{ route('logout') }}">

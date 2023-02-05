@@ -5,7 +5,11 @@
         </h2>
     </x-slot>
 
-    <p id="Receipt"></p>
+    @php
+    (isset($_SESSION['fiets1'])){
+        "<h2>'.$_SESSION['fiets1'].'</h2>"
+    }
+    @endphp
 
     <script src="js/script.js">
         CreateReceipt();
