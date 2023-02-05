@@ -17,7 +17,7 @@ class PizzaController extends Controller
 
     public function __construct()
     {
-        $this->middleware('role:admin|employee');
+        $this->middleware('role:admin|employee')->except('index', 'show');
     }
 
     public function index()
