@@ -38,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bestellingen');
+        Schema::dropIfExists('order_line');
     }
 };
