@@ -5,11 +5,9 @@
         </h2>
     </x-slot>
 
-    <p id="Receipt"></p>
-
-    <script src="js/script.js">
-        CreateReceipt();
-    </script>
+    @php
+        echo'<h2>'.$_SESSION['Pizzas'].'</h2>';
+    @endphp
 
     <x-slot name="footer">
         <h2 class="font-semibold text-l text-gray-600  leading-tight">

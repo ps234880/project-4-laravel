@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Checkout;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
@@ -13,9 +12,12 @@ class CheckoutController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
-    {
-        return view('checkouts.index');
+    public function index(Request $request) {
+        $request->session()->put('my_name','Kliff Undersun');
+        if($request->session()->has('my_name'))
+           echo $request->session()->get('my_name');
+        else
+           echo 'No data in the session';
     }
 
     /**
@@ -36,11 +38,8 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required|max:20',
-        ]);
-        Checkout::create($request->only(['name']));
-        return redirect('checkouts');
+        $request->session()->put('my_name','Virat Gandhi');
+        echo "Data has been added to session";
     }
 
     /**
@@ -74,11 +73,6 @@ class CheckoutController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'required|max:20',
-        ]);
-        Checkout::find($id)->update($request->only(['name']));
-        return redirect('checkouts')->with('success', 'Pizza updated.');
     }
 
     /**
@@ -87,9 +81,9 @@ class CheckoutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        Checkout::destroy($id);
-        return redirect('checkouts')->with('success', 'Pizza deleted.');
+        $request->session()->forget('my_name');
+        echo "Data has been removed from session.";
     }
 }

@@ -38,7 +38,7 @@
                         {{ $footer }}
                     </div>
                 </footer>
-            @endif            
+            @endif
         </div>
     </body>
 </html>

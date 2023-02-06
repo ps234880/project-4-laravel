@@ -33,7 +33,7 @@
                             <tr>
                                 <td class="px-4 py-5 text-sm text-slate-600 text-left">
                                     @foreach ($pizza->ingredients as $ingredient)
-                                        {{ $ingredient->name }}
+                                        {{ $ingredient->name }},
                                     @endforeach
                                 </td>
                             </tr>
