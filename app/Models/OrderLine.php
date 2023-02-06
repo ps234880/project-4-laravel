@@ -14,7 +14,7 @@ class OrderLine extends Model
     protected $fillable = [
         'order_id',
         'pizza_id',
-        'size',
+        'size_id',
         'amount'
     ];
 

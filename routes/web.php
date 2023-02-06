@@ -6,6 +6,7 @@ use App\Http\Controllers\IngredientPizzaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PizzaController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CheckoutController;
@@ -35,7 +36,6 @@ Route::resources([
     'ingredients' => IngredientController::class,
     'units' => UnitController::class,
     'ingredient_pizza' => IngredientPizzaController::class,
-    'checkouts' => CheckoutController::class,
 ]);
 
 Route::get('/dashboard', function () {

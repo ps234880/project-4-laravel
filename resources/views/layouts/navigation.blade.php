@@ -26,7 +26,10 @@
                         <x-nav-link :href="route('adminpizzas.index')" :active="request()->routeIs('adminpizzas.index', 'adminpizzas.edit', 'adminpizzas.create', 'adminpizzas.destroy')">
                             {{ __('Pizzas') }}
                         </x-nav-link>
-                    @endrole
+                        <x-nav-link :href="route('orders.index')" :active="request()->routeIs('orders.index', 'orders.edit', 'orders.create', 'orders.destroy')">
+                            {{ __('Orders') }}
+                        </x-nav-link>
+                    @endhasanyrole
                     @unlessrole('employee|admin')
                     <x-nav-link :href="route('pizzas.index')" :active="request()->routeIs('pizzas.index', 'pizzas.edit', 'pizzas.create', 'pizzas.destroy')">
                         {{ __('Pizzas') }}
@@ -34,10 +37,6 @@
 
                     <x-nav-link :href="route('orders.index')" :active="request()->routeIs('orders.index', 'orders.edit', 'orders.create', 'orders.destroy')">
                         {{ __('Orders') }}
-                    </x-nav-link>
-
-                    <x-nav-link :href="route('checkouts.index')" :active="request()->routeIs('checkouts.index', 'checkouts.edit', 'checkouts.create', 'checkouts.destroy')">
-                        {{ __('Cart') }}
                     </x-nav-link>
                     @endunlessrole
                 </div>
@@ -145,7 +144,11 @@
                     <x-responsive-nav-link :href="route('units.index')">
                         {{ __('Units') }}
                     </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('orders.index')">
+                        {{ __('Orders') }}
+                    </x-responsive-nav-link>
                     @endhasanyrole
+                    @unlessrole('employee|admin')
                     <x-responsive-nav-link :href="route('pizzas.index')">
                         {{ __('Pizzas') }}
                     </x-responsive-nav-link>

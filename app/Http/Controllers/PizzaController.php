@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pizza;
 use App\Models\Ingredient;
 use App\Models\Size;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PizzaController extends Controller
@@ -18,9 +19,11 @@ class PizzaController extends Controller
     public function index()
     {
         $pizzas = Pizza::all();
+        $users = User::all();
+        $sizes = Size::all();
         $ingredients = Ingredient::all();
-
-        return view('pizzas.index', compact('pizzas', 'ingredients'));
+        
+        return view('pizzas.index', compact('pizzas', 'ingredients', 'sizes', 'users'));
     }
 
     /**

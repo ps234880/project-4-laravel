@@ -37,21 +37,51 @@
                                     @endforeach
                                 </td>
                             </tr>
+                            {{-- Size --}}
+                            <form method="post" action="{{ route('orders.store') }}">
+                            <td class="py-2 px-4 text-sm text-slate-600 flex gap-1">
+                                <select name="size_id" id="size_id" onchange="GetSize(this)" {{-- ERWIN --}}
+                                    class="text-sm rounded-lg block w-full p-2.5 bg-slate-600 border-gray-600 placeholder-gray-400 text-white focus:ring-gray-500 focus:border-gray-500">
+                                    @foreach ($sizes as $size)
+                                        @if ($size->id == 2)
+                                            <option selected value="{{ $size->id }}">{{ $size->name }}</option>
+                                        @else
+                                            <option value="{{ $size->id }}">{{ $size->name }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            {{-- Amount --}}
+                                <input type="number" name="amount" id="amount" min="1" value="1" onkeyup="GetAmount(this)"
+                                    placeholder="Enter amount"
+                                class="text-sm rounded-lg block w-full p-2.5 bg-slate-600 border-gray-600 placeholder-gray-400 text-white focus:ring-gray-500 focus:border-gray-500">
+                            </td>
                             {{-- Add & customize --}}
                             <tr>
+                                
                                 <td class="px-4 py-2 text-sm text-slate-600 text-left flex gap-2">
-                                    <a href="{{ route('checkouts.index', $pizza->id) }}"
-                                        class="px-4 py-2 w-full text-center bg-gray-300 rounded-lg font-semibold text-xs text-gray-800 uppercase tracking-widest hover:bg-white focus:bg-white active:bg-gray-300 transition ease-in-out duration-150">
+                                    @csrf
+                                    <button type="submit" class="px-4 py-2 w-full text-center bg-gray-300 rounded-lg font-semibold text-xs text-gray-800 uppercase tracking-widest hover:bg-white focus:bg-white active:bg-gray-300 transition ease-in-out duration-150">
                                         Add pizza
-                                    </a>
+                                    </button>
+                                    <input type="hidden" name="pizza_id" value="{{ $pizza->id }}"/>
+                                    @foreach ($users as $user)
+                                    @if ($user->id == Auth::user()->id)
+                                    @foreach ($user->orders as $order)
+                                    <input type="hidden" name="order_id" value="{{ $order->id }}"/>
+                                    @endforeach
+                                    @endif
+                                    @endforeach
                                 </td>
                             </tr>
+                            </form>
                         </tbody>
                     </table>
                 @endforeach
             </div>
         </div>
     </div>
+
+    <script src="../js/script.js"></script>
 
     <x-slot name="footer">
         <h2 class="font-semibold text-l text-gray-600  leading-tight">

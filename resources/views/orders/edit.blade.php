@@ -8,7 +8,7 @@
     <div class="max-w-4xl mx-auto mt-5">
         <div class="px-4 sm:px-6 lg:px-8">
             {{-- Edit form --}}
-            <form method="POST" action="{{ route('orders.update', $order->user->id) }}">
+            <form method="POST" action="{{ route('orders.update', $order->id) }}">
                 @method('PATCH')
                 @csrf
 

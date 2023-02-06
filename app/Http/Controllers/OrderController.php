@@ -42,7 +42,14 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'order_id',
+            'pizza_id',
+            'size_id',
+            'amount'
+        ]);
+        OrderLine::create($request->only(['order_id', 'pizza_id', 'size_id', 'amount']));
+        return redirect('orders');
     }
 
     /**
@@ -66,7 +73,6 @@ class OrderController extends Controller
     {
         $order = Order::find($id);
         $user = User::find($id);
-        dd($order);
         $orderstatuses = Orderstatus::all();
         return view('orders.edit', compact('user', 'order', 'orderstatuses'));
     }
@@ -80,6 +86,9 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'orderstatus_id' => 'required',
+        ]);
         Order::find($id)->update($request->only(['orderstatus_id']));
         return redirect('orders')->with('success', 'Orderstatus updated.');
     }
