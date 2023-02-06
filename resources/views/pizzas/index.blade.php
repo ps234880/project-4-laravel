@@ -40,8 +40,8 @@
                             {{-- Add & customize --}}
                             <tr>
                                 <td class="px-4 py-2 text-sm text-slate-600 text-left flex gap-2">
-                                    <a href="{{ route('pizzas.show', $pizza->id) }}"
-                                        class="px-4 py-2 w-full text-center bg-gray-300 rounded-lg font-semibold text-xs text-gray-800 uppercase tracking-widest hover:bg-white focus:bg-white active:bg-gray-300 transition ease-in-out duration-150">Customize
+                                    <a href="{{  }}"
+                                        class="px-4 py-2 w-full text-center bg-gray-300 rounded-lg font-semibold text-xs text-gray-800 uppercase tracking-widest hover:bg-white focus:bg-white active:bg-gray-300 transition ease-in-out duration-150">Add
                                         Pizza
                                     </a>
                                 </td>

@@ -27,14 +27,19 @@
                             {{ __('Pizzas') }}
                         </x-nav-link>
                     @endrole
+                    @unlessrole('employee|admin')
                     <x-nav-link :href="route('pizzas.index')" :active="request()->routeIs('pizzas.index', 'pizzas.edit', 'pizzas.create', 'pizzas.destroy')">
                         {{ __('Pizzas') }}
                     </x-nav-link>
 
-                    @endunlessrole
+                    <x-nav-link :href="route('orders.index')" :active="request()->routeIs('orders.index', 'orders.edit', 'orders.create', 'orders.destroy')">
+                        {{ __('Orders') }}
+                    </x-nav-link>
+
                     <x-nav-link :href="route('checkouts.index')" :active="request()->routeIs('checkouts.index', 'checkouts.edit', 'checkouts.create', 'checkouts.destroy')">
                         {{ __('Cart') }}
                     </x-nav-link>
+                    @endunlessrole
                 </div>
 
                 <!-- Settings Dropdown -->
@@ -141,6 +146,8 @@
                         {{ __('Units') }}
                     </x-responsive-nav-link>
                     @endhasanyrole
+
+                    @unlessrole('employee|admin')
                     <x-responsive-nav-link :href="route('orders.index')">
                         {{ __('Orders') }}
                     </x-responsive-nav-link>
@@ -152,6 +159,7 @@
                     <x-nav-link :href="route('checkouts.index')">
                         {{ __('Cart') }}
                     </x-nav-link>
+                    @endunlessrole
 
                     <!-- Authentication -->
                     <form method="POST" action="{{ route('logout') }}">
