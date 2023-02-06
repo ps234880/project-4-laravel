@@ -7,7 +7,7 @@ use App\Models\Ingredient;
 use App\Models\Size;
 use Illuminate\Http\Request;
 
-class PizzaController extends Controller
+class AdminPizzaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +15,18 @@ class PizzaController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function __construct()
+    {
+        $this->middleware('role:admin|employee');
+    }
+
     public function index()
     {
-        $pizzas = Pizza::all();
+        $pizzas = Pizza::orderBy('name')->paginate(10);
         $ingredients = Ingredient::all();
 
-        return view('pizzas.index', compact('pizzas', 'ingredients'));
+        return view('adminpizzas.index', compact('pizzas', 'ingredients'))
+            ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**
@@ -30,7 +36,7 @@ class PizzaController extends Controller
      */
     public function create()
     {
-        return view('pizzas.create');
+        return view('adminpizzas.create');
     }
 
     /**
@@ -45,7 +51,7 @@ class PizzaController extends Controller
             'name' => 'required|max:20',
         ]);
         Pizza::create($request->only(['name']));
-        return redirect('pizzas');
+        return redirect('adminpizzas');
     }
 
     /**
@@ -71,7 +77,7 @@ class PizzaController extends Controller
             $totalSum += $ingredient->price;
         }
 
-        return view('pizzas.show', compact('pizza', 'ingredients', 'sizes', 'sum', 'totalSum'));
+        return view('adminpizzas.show', compact('pizza', 'ingredients', 'sizes', 'sum', 'totalSum'));
     }
 
     /**
@@ -84,7 +90,7 @@ class PizzaController extends Controller
     {
         $pizza = Pizza::find($id);
         $ingredients = Ingredient::all();
-        return view('pizzas.edit', compact('pizza', 'ingredients'));
+        return view('adminpizzas.edit', compact('pizza', 'ingredients'));
     }
 
     /**
@@ -94,14 +100,14 @@ class PizzaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
+    
     public function update(Request $request, $id)
     {
         $request->validate([
             'name' => 'required|max:20',
         ]);
         Pizza::find($id)->update($request->only(['name']));
-        return redirect('pizzas')->with('success', 'Pizza updated.');
+        return redirect('adminpizzas')->with('success', 'Pizza updated.');
     }
 
     /**
@@ -113,6 +119,6 @@ class PizzaController extends Controller
     public function destroy($id)
     {
         Pizza::destroy($id);
-        return redirect('pizzas')->with('success', 'Pizza deleted.');
+        return redirect('adminpizzas')->with('success', 'Pizza deleted.');
     }
 }

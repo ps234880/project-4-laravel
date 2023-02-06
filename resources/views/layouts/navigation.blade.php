@@ -23,7 +23,11 @@
                         <x-nav-link :href="route('units.index')" :active="request()->routeIs('units.index', 'units.edit', 'units.create', 'units.destroy')">
                             {{ __('Units') }}
                         </x-nav-link>
+                        <x-nav-link :href="route('adminpizzas.index')" :active="request()->routeIs('adminpizzas.index', 'adminpizzas.edit', 'adminpizzas.create', 'adminpizzas.destroy')">
+                            {{ __('Pizzas') }}
+                        </x-nav-link>
                     @endrole
+                    @unlessrole('employee|admin')
                     <x-nav-link :href="route('pizzas.index')" :active="request()->routeIs('pizzas.index', 'pizzas.edit', 'pizzas.create', 'pizzas.destroy')">
                         {{ __('Pizzas') }}
                     </x-nav-link>
@@ -35,6 +39,7 @@
                     <x-nav-link :href="route('checkouts.index')" :active="request()->routeIs('checkouts.index', 'checkouts.edit', 'checkouts.create', 'checkouts.destroy')">
                         {{ __('Cart') }}
                     </x-nav-link>
+                    @endunlessrole
                 </div>
 
                 <!-- Settings Dropdown -->
@@ -43,7 +48,11 @@
                         <x-slot name="trigger">
                             <button
                                 class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-400 dark:bg-slate-600 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                                @if (Auth::check())
                                 <div>{{ Auth::user()->name }}</div>
+                                @else
+                                <div>Guest</div>
+                                @endif
 
                                 <div class="ml-1">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
@@ -57,6 +66,7 @@
                         </x-slot>
 
                         <x-slot name="content">
+                            @if (Auth::check())
                             <x-dropdown-link :href="route('profile.edit')">
                                 {{ __('Profile') }}
                             </x-dropdown-link>
@@ -71,6 +81,11 @@
                                     {{ __('Log Out') }}
                                 </x-dropdown-link>
                             </form>
+                            @else
+                            <x-dropdown-link :href="route('login')">
+                                {{ __('Login') }}
+                            </x-dropdown-link>
+                            @endif
                         </x-slot>
                     </x-dropdown>
                 </div>
@@ -98,8 +113,20 @@
             <!-- Responsive Settings Options -->
             <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
                 <div class="px-4">
-                    <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                    <div class="font-medium text-base text-gray-800 dark:text-gray-200">
+                        @if (Auth::check())
+                        {{ Auth::user()->name }}
+                        @else
+                        Guest
+                        @endif
+                    </div>
+                    <div class="font-medium text-sm text-gray-500">
+                        @if (Auth::check())
+                        {{ Auth::user()->email }}
+                        @else
+                        No Email
+                        @endif
+                    </div>
                 </div>
 
                 <div class="mt-3 space-y-1">
@@ -130,6 +157,7 @@
                     <x-nav-link :href="route('checkouts.index')">
                         {{ __('Cart') }}
                     </x-nav-link>
+                    @endunlessrole
 
                     <!-- Authentication -->
                     <form method="POST" action="{{ route('logout') }}">

@@ -7,10 +7,11 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
             {{-- Pizzas --}}
-            @hasrole('customer')
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 @foreach ($pizzas as $pizza)
+
                     {{-- ingredient sum price per pizza --}}
                     @php
                         $sum = 0;
@@ -49,47 +50,6 @@
                     </table>
                 @endforeach
             </div>
-            @endhasrole
-
-            {{-- Pizza crud --}}
-            @hasanyrole('admin|employee')
-            <table class="ring-1 ring-black ring-opacity-20 rounded-lg mt-4">
-                <thead class="bg-slate-600 ">
-                    <tr>
-                        <th scope="col" class="px-4 py-5 text-left text-sm uppercase text-slate-50 rounded-tl-lg">
-                            Name
-                        </th>
-                        <th scope="col" class="px-4 py-5 rounded-tr-lg">
-                            <a href="{{ route('pizzas.create') }}"
-                                class="text-slate-50 hover:text-slate-300 text-sm uppercase">
-                                Add Pizza
-                            </a>
-                        </th>
-                    </tr>
-                </thead>
-                {{-- Pizzas --}}
-                <tbody>
-                    @foreach ($pizzas as $pizza)
-                        <tr>
-                            {{-- Name --}}
-                            <td class="py-4 px-4 text-sm text-slate-600">
-                                <a href="{{ route('pizzas.show', $pizza->id) }}">{{ $pizza->name }}</a>
-                            </td>
-                            {{-- Edit and delete --}}
-                            <td class="py-4 px-4 text-sm font-medium flex justify-between">
-                                <a href="{{ route('pizzas.edit', $pizza->id) }}"
-                                    class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                <form action="{{ route('pizzas.destroy', $pizza->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="text-red-600 hover:text-red-900">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            @endhasanyrole
         </div>
     </div>
 

@@ -41,8 +41,8 @@ class IngredientSeeder extends Seeder
             'unit_id' => 3
         ]);
         Ingredient::create([
-            'name' => "Pizza dough",
-            'price' => 2.00,
+            'name' => "Pizza Dough",
+            'price' => 4.00,
             'unit_id' => 1
         ]);
         Ingredient::create([
@@ -59,6 +59,11 @@ class IngredientSeeder extends Seeder
             'name' => "Pineapple",
             'price' => 0.50,
             'unit_id' => 1
+        ]);
+        Ingredient::create([
+            'name' => "Pepperoni",
+            'price' => 0.75,
+            'unit_id' => 2
         ]);
     }
 }

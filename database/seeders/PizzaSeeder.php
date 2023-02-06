@@ -20,19 +20,7 @@ class PizzaSeeder extends Seeder
         ]);
 
         Pizza::create([
-            'name' => "Margherita"
-        ]);
-
-        Pizza::create([
-            'name' => "Quattro formaggi"
-        ]);
-
-        Pizza::create([
             'name' => "Pepperoni"
-        ]);
-
-        Pizza::create([
-            'name' => "Kiwinini"
         ]);
     }
 }

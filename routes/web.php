@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPizzaController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\IngredientPizzaController;
 use App\Http\Controllers\ProfileController;
@@ -23,11 +24,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect('dashboard');
+    return view('dashboard');
 });
 
 Route::resources([
     'pizzas' => PizzaController::class,
+    'adminpizzas' => AdminPizzaController::class,
     'orders' => OrderController::class,
     'users' => UserController::class,
     'ingredients' => IngredientController::class,
@@ -38,7 +40,7 @@ Route::resources([
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

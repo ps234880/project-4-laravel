@@ -66,6 +66,7 @@ class OrderController extends Controller
     {
         $order = Order::find($id);
         $user = User::find($id);
+        dd($order);
         $orderstatuses = Orderstatus::all();
         return view('orders.edit', compact('user', 'order', 'orderstatuses'));
     }
