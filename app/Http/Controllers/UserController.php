@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -32,7 +34,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $orders = Order::all();
+        return view('users.create', compact('orders'));
     }
 
     /**
@@ -43,7 +46,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required',
             'password' => 'required',
             'email' => 'required',
@@ -53,15 +56,9 @@ class UserController extends Controller
             'phone_number' => 'required',
         ]);
     
-        User::create($request->only([
-            'name',
-            'password',
-            'email',
-            'street',
-            'house_number',
-            'postal_code' ,
-            'phone_number',
-        ]));
+        $validated['password'] = Hash::make($validated['password']);
+
+        User::create($validated)->assignRole('customer', 'customer');
 
         return redirect()->route('users.index');
     }

@@ -16,8 +16,7 @@
                         <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index', 'users.edit', 'users.create', 'users.destroy')">
                             {{ __('Users') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('ingredients.index')" :active="request()->routeIs('ingredients.index', 'ingredients.edit', 'ingredients.create', 'ingredients.destroy',
-                        )">
+                        <x-nav-link :href="route('ingredients.index')" :active="request()->routeIs('ingredients.index', 'ingredients.edit', 'ingredients.create', 'ingredients.destroy' )">
                             {{ __('Ingredients') }}
                         </x-nav-link>
                         <x-nav-link :href="route('units.index')" :active="request()->routeIs('units.index', 'units.edit', 'units.create', 'units.destroy')">
@@ -83,6 +82,9 @@
                             @else
                             <x-dropdown-link :href="route('login')">
                                 {{ __('Login') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('register')">
+                                {{ __('Register') }}
                             </x-dropdown-link>
                             @endif
                         </x-slot>
@@ -156,10 +158,6 @@
                     <x-responsive-nav-link :href="route('orders.index')">
                         {{ __('Orders') }}
                     </x-responsive-nav-link>
-
-                    <x-nav-link :href="route('checkouts.index')">
-                        {{ __('Cart') }}
-                    </x-nav-link>
                     @endunlessrole
 
                     <!-- Authentication -->
