@@ -6,14 +6,8 @@
     </x-slot>
 
     @php
-    (isset($_SESSION['fiets1'])){
-        "<h2>'.$_SESSION['fiets1'].'</h2>"
-    }
+        echo'<h2>'.$_SESSION['Pizzas'].'</h2>';
     @endphp
-
-    <script src="js/script.js">
-        CreateReceipt();
-    </script>
 
     <x-slot name="footer">
         <h2 class="font-semibold text-l text-gray-600  leading-tight">

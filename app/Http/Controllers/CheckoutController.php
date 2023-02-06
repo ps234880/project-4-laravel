@@ -12,9 +12,12 @@ class CheckoutController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
-    {
-        return view('checkouts.index');
+    public function index(Request $request) {
+        $request->session()->put('my_name','Kliff Undersun');
+        if($request->session()->has('my_name'))
+           echo $request->session()->get('my_name');
+        else
+           echo 'No data in the session';
     }
 
     /**
@@ -35,6 +38,8 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
+        $request->session()->put('my_name','Virat Gandhi');
+        echo "Data has been added to session";
     }
 
     /**
@@ -76,7 +81,9 @@ class CheckoutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
+        $request->session()->forget('my_name');
+        echo "Data has been removed from session.";
     }
 }

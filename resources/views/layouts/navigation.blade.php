@@ -35,7 +35,7 @@
                         {{ __('Pizzas') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('checkouts.index')">
+                    <x-nav-link :href="route('checkouts.index')" :active="request()->routeIs('checkouts.index', 'checkouts.edit', 'checkouts.create', 'checkouts.destroy')">
                         {{ __('Cart') }}
                     </x-nav-link>
                 </div>
