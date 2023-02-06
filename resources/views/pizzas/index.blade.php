@@ -64,13 +64,17 @@
                                         Add pizza
                                     </button>
                                     <input type="hidden" name="pizza_id" value="{{ $pizza->id }}"/>
+
                                     @foreach ($users as $user)
-                                    @if ($user->id == Auth::user()->id)
                                     @foreach ($user->orders as $order)
+                                    @if (Auth::check())
+                                    @if ($user->id == Auth::user()->id)
                                     <input type="hidden" name="order_id" value="{{ $order->id }}"/>
-                                    @endforeach
+                                    @endif
                                     @endif
                                     @endforeach
+                                    @endforeach
+                                    
                                 </td>
                             </tr>
                             </form>

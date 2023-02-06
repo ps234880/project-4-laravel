@@ -16,6 +16,10 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     
+    public function __construct(){
+        $this->middleware('role:customer|admin|employee');    
+    }
+
     public function index()
     {
         $orders = Order::all();
