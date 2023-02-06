@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Order;
 use App\Models\OrderLine;
 use App\Models\Orderstatus;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -35,7 +36,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        return view('pizzas.create');
     }
 
     /**
@@ -46,14 +47,32 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'order_id',
-            'pizza_id',
-            'size_id',
-            'amount'
-        ]);
-        OrderLine::create($request->only(['order_id', 'pizza_id', 'size_id', 'amount']));
-        return redirect('orders');
+        if ($request->has('pizza_id'))
+        {
+            $this->validate($request, [
+                'order_id',
+                'pizza_id',
+                'size_id',
+                'amount',
+            ]);
+            OrderLine::create($request->only(['order_id', 'pizza_id', 'size_id', 'amount']));
+            return redirect('orders');
+        }
+
+        if ($request->has('user_id'))
+        {
+            $this->validate($request, [
+                'user_id' => 'required',
+                'orderstatus_id' => 'required',
+            ]);
+            Order::create($request->only([
+                'user_id', 
+                'orderstatus_id',
+            ]));
+            Order::destroy($request->get('order_id'));
+            return redirect('orders');
+        }
+
     }
 
     /**
@@ -103,8 +122,18 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'user_id' => 'required',
+            'orderstatus_id' => 'required',
+        ]);
+        Order::create($request->only([
+            'user_id', 
+            'orderstatus_id',
+        ]));
+
+        Order::destroy($id);
+        return redirect('orders');
     }
 }

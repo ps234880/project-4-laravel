@@ -59,11 +59,23 @@
                             <tr>
                                 
                                 <td class="px-4 py-2 text-sm text-slate-600 text-left flex gap-2">
-                                    @csrf
+                                    @foreach ($users as $user)
+                                    @foreach ($user->orders as $order)
+                                    @if (Auth::check())
+                                    @if ($user->id == Auth::user()->id)
+                                    @if($order->orderstatus->name != "Initial")
+                                    
+                                    @else
                                     <button type="submit" class="px-4 py-2 w-full text-center bg-gray-300 rounded-lg font-semibold text-xs text-gray-800 uppercase tracking-widest hover:bg-white focus:bg-white active:bg-gray-300 transition ease-in-out duration-150">
-                                        Add pizza
+                                    Add pizza
                                     </button>
+                                    @csrf
                                     <input type="hidden" name="pizza_id" value="{{ $pizza->id }}"/>
+                                    @endif
+                                    @endif
+                                    @endif
+                                    @endforeach
+                                    @endforeach
 
                                     @foreach ($users as $user)
                                     @foreach ($user->orders as $order)
@@ -74,7 +86,6 @@
                                     @endif
                                     @endforeach
                                     @endforeach
-                                    
                                 </td>
                             </tr>
                             </form>
