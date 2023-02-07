@@ -57,8 +57,19 @@ class UserController extends Controller
         ]);
     
         $validated['password'] = Hash::make($validated['password']);
+        
+        $user = User::create($validated)->assignRole('customer', 'customer');
 
-        User::create($validated)->assignRole('customer', 'customer');
+        $request->merge([
+            'user_id' => $user->id,
+            'orderstatus_id' => 1,
+        ]);
+
+        Order::create(
+            $request->only([
+            'user_id',
+            'orderstatus_id',
+        ]));
 
         return redirect()->route('users.index');
     }

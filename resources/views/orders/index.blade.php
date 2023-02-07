@@ -20,6 +20,9 @@
                             Name
                         </th>
                         <th scope="col" class="px-4 py-5 text-left text-sm uppercase text-slate-50">
+                            Order
+                        </th>
+                        <th scope="col" class="px-4 py-5 text-left text-sm uppercase text-slate-50">
                             Status
                         </th>
                         <th scope="col" class="px-4 py-5 text-left text-sm uppercase text-slate-50">
@@ -40,6 +43,12 @@
                                 <a>{{ $order->user->name }}</a>
                             </td>
                             <td class="py-4 px-4 text-sm text-slate-600">
+                                @foreach ($order->orderlines as $orderline)
+                                <a>{{ $orderline->pizza->name }} - {{ $orderline->size->name }} - x{{ $orderline->amount }}</a><br>
+                                @endforeach
+                            </td>
+                            <td class="py-4 px-4 text-sm text-slate-600">
+
                                 <a>{{ $order->orderstatus->name }}</a>
                             </td>
                             <td class="py-4 px-4 text-sm font-medium justify-between">
@@ -128,6 +137,15 @@
                         </table>   
                     @endif
                     @endforeach
+                    {{-- new account can make a new order                    
+                    @if(!empty($order))
+                        <form method="post" action="{{ route('orders.store') }}">
+                            @csrf
+                            <button class="text-left text-sm uppercase text-slate-900 hover:text-slate-500" type="submit">Add Order</button>
+                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}"/>
+                            <input type="hidden" name="orderstatus_id" value="{{ 1 }}"/>
+                        </form>
+                    @endif --}}
                 @endforeach
             @endunlessrole
         </div>
